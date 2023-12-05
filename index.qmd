@@ -1,0 +1,14 @@
+# Welcome
+
+::: {.callout-important}
+Under construction!
+:::
+
+This repository contains all the work I have done on the **Ames Housing**
+dataset.
+
+## Resources
+
+ [Reference article](http://jse.amstat.org/v19n3/decock.pdf)
+ 
+ [Data dictionary](http://jse.amstat.org/v19n3/decock/DataDocumentation.txt)

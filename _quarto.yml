@@ -1,0 +1,31 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Ames Housing"
+  
+  navbar:
+    search: true
+
+format:
+  html:
+    theme: yeti
+    highlight-style: atom-one
+    css: styles.css
+    toc: false
+    header-includes: |
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+
+execute:
+  message: false
+  warning: false
+
+knitr:
+  opts_chunk:
+    collapse: true
+
+monofont: Roboto Mono
+editor: source
