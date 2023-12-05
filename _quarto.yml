@@ -12,7 +12,7 @@ website:
     style: docked
     alignment: left
     contents: 
-    - data-dictionary.qmd
+      - data-dictionary.qmd
 
 format:
   html:
