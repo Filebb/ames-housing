@@ -907,4 +907,4 @@ ames <- ames_raw |>
 
 rm(calc_mode)
 
-ames |> write_rds(file = "data/ames.RDS")
+ames |> write_rds(file = "ames.RDS")
