@@ -1,0 +1,539 @@
+# Data Dictionary
+
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| Variable Name               | Type      | Description                                                                     |
++=============================+===========+=================================================================================+
+| `order`                     | _Numeric_ | Unique observation ID                                                           |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `pid`                       | _Nominal_ | Parcel identification number - can be used with city web site for parcel review |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `ms_subclass`               | _Nominal_ | Identifies the type of dwelling involved in the sale                            |
+|                             |           |                                                                                 |
+|                             |           | - One Story 1946 and Newer All Styles                                           |
+|                             |           | - One Story 1945 and Older                                                      |
+|                             |           | - One Story with Finished Attic All Ages                                        |
+|                             |           | - One and Half Story Unfinished All Ages                                        |
+|                             |           | - One and Half Story Finished All Ages                                          |
+|                             |           | - Two Story 1946 and Newer                                                      |
+|                             |           | - Two Story 1945 and Older                                                      |
+|                             |           | - Two and Half Story All Ages                                                   |
+|                             |           | - Split or Multilevel                                                           |
+|                             |           | - Split Foyer                                                                   |
+|                             |           | - Duplex All Styles and Ages                                                    |
+|                             |           | - One Story PUD 1946 and Newer                                                  |
+|                             |           | - One and Half Story PUD All Ages                                               |
+|                             |           | - Two Story PUD 1946 and Newer                                                  |
+|                             |           | - PUD Multilevel Split Level Foyer                                              |
+|                             |           | - Two Family Conversion All Styles and Ages                                     |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `ms_zoning`                 | _Nominal_ | Identifies the general zoning classification of the sale                        |
+|                             |           |                                                                                 |
+|                             |           | - Agriculture                                                                   |
+|                             |           | - Commercial                                                                    |
+|                             |           | - Floating Village Residential                                                  |
+|                             |           | - Industrial                                                                    |
+|                             |           | - Residential High Density                                                      |
+|                             |           | - Residential Low Density                                                       |
+|                             |           | - Residential Medium Density                                                    |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `lot_frontage`              | _Numeric_ | Linear feet of street connected to property                                     |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `lot_area`                  | _Numeric_ | Lot size in square feet                                                         |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `street`                    | _Nominal_ | Type of road access to property                                                 |
+|                             |           |                                                                                 |
+|                             |           | - Gravel                                                                        |
+|                             |           | - Paved                                                                         |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `alley`                     | _Nominal_ | Type of alley access to property                                                |
+|                             |           |                                                                                 |
+|                             |           | - Gravel                                                                        |
+|                             |           | - Paved                                                                         |
+|                             |           | - No Alley Access                                                               |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `lot_shape`                 | _Nominal_ | General shape of property                                                       |
+|                             |           |                                                                                 |
+|                             |           | - Irregular                                                                     |
+|                             |           | - Moderately Irregular                                                          |
+|                             |           | - Slightly Irregular                                                            |
+|                             |           | - Regular                                                                       |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `land_contour`              | _Nominal_ | Flatness of the property                                                        |
+|                             |           |                                                                                 |
+|                             |           | - Near Flat Level                                                               |
+|                             |           | - Banked                                                                        |
+|                             |           | - Hillside                                                                      |
+|                             |           | - Depression                                                                    |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `utilities`                 | _Nominal_ | Type of utilities available                                                     |
+|                             |           |                                                                                 |
+|                             |           | - Electricity Gas                                                               |
+|                             |           | - Electricity Gas Water                                                         |
+|                             |           | - All Public Utilities                                                          |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `lot_configuration`         | _Nominal_ | Lot configuration                                                               |
+|                             |           |                                                                                 |
+|                             |           | - Inside Lot                                                                    |
+|                             |           | - Corner Lot                                                                    |
+|                             |           | - Cul de Sac                                                                    |
+|                             |           | - Frontage on 2 Sides                                                           |
+|                             |           | - Frontage on 3 Sides                                                           |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `land_slope`                | _Nominal_ | Slope of property                                                               |
+|                             |           |                                                                                 |
+|                             |           | - Gentle Slope                                                                  |
+|                             |           | - Moderate Slope                                                                |
+|                             |           | - Severe Slope                                                                  |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `neighborhood`              | _Nominal_ | Physical locations within Ames city limits                                      |
+|                             |           |                                                                                 |
+|                             |           | - Bloomington Heights                                                           |
+|                             |           | - Bluestem                                                                      |
+|                             |           | - Briardale                                                                     |
+|                             |           | - Brookside                                                                     |
+|                             |           | - Clear Creek                                                                   |
+|                             |           | - College Creek                                                                 |
+|                             |           | - Crawford                                                                      |
+|                             |           | - Edwards                                                                       |
+|                             |           | - Gilbert                                                                       |
+|                             |           | - Greens                                                                        |
+|                             |           | - Green Hills                                                                   |
+|                             |           | - Iowa DOT and Rail Road                                                        |
+|                             |           | - Landmark                                                                      |
+|                             |           | - Meadow Village                                                                |
+|                             |           | - Mitchell                                                                      |
+|                             |           | - North Ames                                                                    |
+|                             |           | - Northridge                                                                    |
+|                             |           | - Northpark Villa                                                               |
+|                             |           | - Northridge Heights                                                            |
+|                             |           | - Northwest Ames                                                                |
+|                             |           | - Old Town                                                                      |
+|                             |           | - South and West of Iowa State University                                       |
+|                             |           | - Sawyer                                                                        |
+|                             |           | - Sawyer West                                                                   |
+|                             |           | - Somerset                                                                      |
+|                             |           | - Stone Brook                                                                   |
+|                             |           | - Timberland                                                                    |
+|                             |           | - Veenker                                                                       |
+|                             |           | - Hayden Lake                                                                   |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `condition_1`               | _Nominal_ | Proximity to various conditions                                                 |
+|                             |           |                                                                                 |
+|                             |           | - Adjacent Arterial Street                                                      |
+|                             |           | - Adjacent Feeder Street                                                        |
+|                             |           | - Normal                                                                        |
+|                             |           | - Within 200 North South Railroad                                               |
+|                             |           | - Adjacent North South Railroad                                                 |
+|                             |           | - Near Positive off Site Feature                                                |
+|                             |           | - Adjacent Postive off Site Feature                                             |
+|                             |           | - Within 200 East West Railroad                                                 |
+|                             |           | - Adjacent East West Railroad                                                   |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `condition_2`               | _Nominal_ | Proximity to various conditions (if more than one is present)                   |
+|                             |           |                                                                                 |
+|                             |           | - Adjacent Arterial Street                                                      |
+|                             |           | - Adjacent Feeder Street                                                        |
+|                             |           | - Normal                                                                        |
+|                             |           | - Within 200 North South Railroad                                               |
+|                             |           | - Adjacent North South Railroad                                                 |
+|                             |           | - Near Positive off Site Feature                                                |
+|                             |           | - Adjacent Postive off Site Feature                                             |
+|                             |           | - Within 200 East West Railroad                                                 |
+|                             |           | - Adjacent East West Railroad                                                   |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `building_type`             | _Nominal_ | Type of dwelling                                                                |
+|                             |           |                                                                                 |
+|                             |           | - One Family Detached                                                           |
+|                             |           | - Two Family Conversion                                                         |
+|                             |           | - Duplex                                                                        |
+|                             |           | - Townhouse End Unit                                                            |
+|                             |           | - Townhouse Inside Unit                                                         |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `house_style`               | _Nominal_ | Style of dwelling                                                               |
+|                             |           |                                                                                 |
+|                             |           | - One Story                                                                     |
+|                             |           | - One and Half Story 2nd Level Finished                                         |
+|                             |           | - One and Half Story 2nd Level Unfinished                                       |
+|                             |           | - Two Story                                                                     |
+|                             |           | - Two and Half Story 2nd Level Finished                                         |
+|                             |           | - Two and Half Story 2nd Level Unfinished                                       |
+|                             |           | - Split Foyer                                                                   |
+|                             |           | - Split Level                                                                   |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `overall_quality`           | _Nominal_ | Rates the overall material and finish of the house                              |
+|                             |           |                                                                                 |
+|                             |           | - Very Poor                                                                     |
+|                             |           | - Poor                                                                          |
+|                             |           | - Fair                                                                          |
+|                             |           | - Below Average                                                                 |
+|                             |           | - Average                                                                       |
+|                             |           | - Above Average                                                                 |
+|                             |           | - Good                                                                          |
+|                             |           | - Very Good                                                                     |
+|                             |           | - Excellent                                                                     |
+|                             |           | - Very Excellent                                                                |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `overall_condition`         | _Nominal_ | Rates the overall condition of the house                                        |
+|                             |           |                                                                                 |
+|                             |           | - Very Poor                                                                     |
+|                             |           | - Poor                                                                          |
+|                             |           | - Fair                                                                          |
+|                             |           | - Below Average                                                                 |
+|                             |           | - Average                                                                       |
+|                             |           | - Above Average                                                                 |
+|                             |           | - Good                                                                          |
+|                             |           | - Very Good                                                                     |
+|                             |           | - Excellent                                                                     |
+|                             |           | - Very Excellent                                                                |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `year_built`                | _Numeric_ | Original construction date                                                      |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `year_remod_add`            | _Numeric_ | Remodel date (same as construction date if no remodeling or additions)          |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `roof_style`                | _Nominal_ | Type of roof                                                                    |
+|                             |           |                                                                                 |
+|                             |           | - Flat                                                                          |
+|                             |           | - Gable                                                                         |
+|                             |           | - Gabrel Barn                                                                   |
+|                             |           | - Hip                                                                           |
+|                             |           | - Mansard                                                                       |
+|                             |           | - Shed                                                                          |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `roof_material`             | _Nominal_ | Roof material                                                                   |
+|                             |           |                                                                                 |
+|                             |           | - Clay or Tile                                                                  |
+|                             |           | - Composite Shingle                                                             |
+|                             |           | - Membrane                                                                      |
+|                             |           | - Metal                                                                         |
+|                             |           | - Roll                                                                          |
+|                             |           | - Gravel and Tar                                                                |
+|                             |           | - Wood Shakes                                                                   |
+|                             |           | - Wood Shingles                                                                 |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `exterior_1`                | _Nominal_ | Exterior covering on house                                                      |
+|                             |           |                                                                                 |
+|                             |           | - Asbestos Shingles                                                             |
+|                             |           | - Asphalt Shingles                                                              |
+|                             |           | - Brick Common                                                                  |
+|                             |           | - Brick Face                                                                    |
+|                             |           | - Cinder Block                                                                  |
+|                             |           | - Cement Board                                                                  |
+|                             |           | - Hard Board                                                                    |
+|                             |           | - Imitation Stucco                                                              |
+|                             |           | - Metal Siding                                                                  |
+|                             |           | - Other                                                                         |
+|                             |           | - Plywood                                                                       |
+|                             |           | - PreCast                                                                       |
+|                             |           | - Stone                                                                         |
+|                             |           | - Stucco                                                                        |
+|                             |           | - Vinyl Siding                                                                  |
+|                             |           | - Wood Siding                                                                   |
+|                             |           | - Wood Shingles                                                                 |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `exterior_2`                | _Nominal_ | Exterior covering on house (if more than one material)                          |
+|                             |           |                                                                                 |
+|                             |           | - Asbestos Shingles                                                             |
+|                             |           | - Asphalt Shingles                                                              |
+|                             |           | - Brick Common                                                                  |
+|                             |           | - Brick Face                                                                    |
+|                             |           | - Cinder Block                                                                  |
+|                             |           | - Cement Board                                                                  |
+|                             |           | - Hard Board                                                                    |
+|                             |           | - Imitation Stucco                                                              |
+|                             |           | - Metal Siding                                                                  |
+|                             |           | - Other                                                                         |
+|                             |           | - Plywood                                                                       |
+|                             |           | - PreCast                                                                       |
+|                             |           | - Stone                                                                         |
+|                             |           | - Stucco                                                                        |
+|                             |           | - Vinyl Siding                                                                  |
+|                             |           | - Wood Siding                                                                   |
+|                             |           | - Wood Shingles                                                                 |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `masonry_veneer_type`       | _Nominal_ | Masonry veneer type                                                             |
+|                             |           |                                                                                 |
+|                             |           | - Brick Common                                                                  |
+|                             |           | - Brick Face                                                                    |
+|                             |           | - Cinder Block                                                                  |
+|                             |           | - None                                                                          |
+|                             |           | - Stone                                                                         |
+|                             |           | - None                                                                          |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `masonry_veneer_area`       | _Numeric_ | Masonry veneer area in square feet                                              |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `exterior_quality`          | _Nominal_ | Evaluates the quality of the material on the exterior                           |
+|                             |           |                                                                                 |
+|                             |           | - Poor                                                                          |
+|                             |           | - Fair                                                                          |
+|                             |           | - Average Typical                                                               |
+|                             |           | - Good                                                                          |
+|                             |           | - Excellent                                                                     |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `exterior_condition`        | _Nominal_ | Evaluates the present condition of the material on the exterior                 |
+|                             |           |                                                                                 |
+|                             |           | - Poor                                                                          |
+|                             |           | - Fair                                                                          |
+|                             |           | - Average Typical                                                               |
+|                             |           | - Good                                                                          |
+|                             |           | - Excellent                                                                     |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `foundation`                | _Nominal_ | Evaluates the present condition of the material on the exterior                 |
+|                             |           |                                                                                 |
+|                             |           | - Brick and Tile                                                                |
+|                             |           | - Cinder Block                                                                  |
+|                             |           | - Poured Contrete                                                               |
+|                             |           | - Slab                                                                          |
+|                             |           | - Stone                                                                         |
+|                             |           | - Wood                                                                          |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `basement_quality`          | _Nominal_ | Evaluates the height of the basement                                            |
+|                             |           |                                                                                 |
+|                             |           | - No Basement                                                                   |
+|                             |           | - Poor                                                                          |
+|                             |           | - Fair                                                                          |
+|                             |           | - Average Typical                                                               |
+|                             |           | - Good                                                                          |
+|                             |           | - Excellent                                                                     |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `basement_condition`        | _Nominal_ | Evaluates the general condition of the basement                                 |
+|                             |           |                                                                                 |
+|                             |           | - No Basement                                                                   |
+|                             |           | - Poor                                                                          |
+|                             |           | - Fair                                                                          |
+|                             |           | - Average Typical                                                               |
+|                             |           | - Good                                                                          |
+|                             |           | - Excellent                                                                     |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `basement_exposure`         | _Nominal_ | Refers to walkout or garden level walls                                         |
+|                             |           |                                                                                 |
+|                             |           | - No Basement                                                                   |
+|                             |           | - No Exposure                                                                   |
+|                             |           | - Minimum Exposure                                                              |
+|                             |           | - Average Exposure                                                              |
+|                             |           | - Good Exposure                                                                 |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `basement_fin_type_1`       | _Nominal_ | Rating of basement finished area                                                |
+|                             |           |                                                                                 |
+|                             |           | - No Basement                                                                   |
+|                             |           | - Unfinshed                                                                     |
+|                             |           | - Low Quality                                                                   |
+|                             |           | - Average Rec Room                                                              |
+|                             |           | - Below Average Living Quarters                                                 |
+|                             |           | - Average Living Quarters                                                       |
+|                             |           | - Good Living Quarters                                                          |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `basement_area_type_1`      | _Numeric_ | Type 1 finished square feet                                                     |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `basement_fin_type_2`       | _Nominal_ | Rating of basement finished area (if multiple types)                            |
+|                             |           |                                                                                 |
+|                             |           | - No Basement                                                                   |
+|                             |           | - Unfinshed                                                                     |
+|                             |           | - Low Quality                                                                   |
+|                             |           | - Average Rec Room                                                              |
+|                             |           | - Below Average Living Quarters                                                 |
+|                             |           | - Average Living Quarters                                                       |
+|                             |           | - Good Living Quarters                                                          |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `basement_area_type_2`      | _Numeric_ | Type 2 finished square feet                                                     |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `basement_unfinished_area`  | _Numeric_ | Unfinished square feet of basement area                                         |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `basement_total_area`       | _Numeric_ | Total square feet of basement area                                              |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `heating`                   | _Nominal_ | Type of heating                                                                 |
+|                             |           |                                                                                 |
+|                             |           | - Floor Furnace                                                                 |
+|                             |           | - Gas Forced Warm Air Furnace                                                   |
+|                             |           | - Gas Hot Water or Steam Heat                                                   |
+|                             |           | - Gravity Furnace                                                               |
+|                             |           | - Hot Water or Steam Heat other than Gas                                        |
+|                             |           | - Average Living Quarters                                                       |
+|                             |           | - Wall Furnace                                                                  |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `heating_quality`           | _Nominal_ | Heating quality and condition                                                   |
+|                             |           |                                                                                 |
+|                             |           | - Poor                                                                          |
+|                             |           | - Fair                                                                          |
+|                             |           | - Average Typical                                                               |
+|                             |           | - Good                                                                          |
+|                             |           | - Excellent                                                                     |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `central_air`               | _Nominal_ | Heating quality and condition                                                   |
+|                             |           |                                                                                 |
+|                             |           | - No                                                                            |
+|                             |           | - Yes                                                                           |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `electrical`                | _Nominal_ | Heating quality and condition                                                   |
+|                             |           |                                                                                 |
+|                             |           | - Mixed                                                                         |
+|                             |           | - Fuse Box Poor                                                                 |
+|                             |           | - Fuse Box Fair                                                                 |
+|                             |           | - Fuse Box Average                                                              |
+|                             |           | - Standard Circuit Breakers and Romex                                           |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `first_floor_area`          | _Numeric_ | First Floor square feet                                                         |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `second_floor_area`         | _Numeric_ | Second floor square feet                                                        |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `low_quality_finished_area` | _Numeric_ | Low quality finished square feet (all floors)                                   |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `ground_living_area`        | _Numeric_ | Above grade (ground) living area square feet                                    |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `basement_full_bathrooms`   | _Numeric_ | Basement full bathrooms                                                         |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `basement_half_bathrooms`   | _Numeric_ | Basement half bathrooms                                                         |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `full_bathrooms`            | _Numeric_ | Full bathrooms above grade                                                      |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `half_bathrooms`            | _Numeric_ | Half baths above grade                                                          |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `bedroom_above_ground`      | _Numeric_ | Bedrooms above grade (does NOT include basement bedrooms)                       |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `kitchen_above_ground`      | _Numeric_ | Kitchens above grade                                                            |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `kitchen_quality`           | _Nominal_ | Kitchen quality                                                                 |
+|                             |           |                                                                                 |
+|                             |           | - Poor                                                                          |
+|                             |           | - Fair                                                                          |
+|                             |           | - Average Typical                                                               |
+|                             |           | - Good                                                                          |
+|                             |           | - Excellent                                                                     |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `total_rooms_above_ground`  | _Numeric_ | Total rooms above grade (does not include bathrooms)                            |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `functional`                | _Nominal_ | Home functionality (Assume typical unless deductions are warranted)             |
+|                             |           |                                                                                 |
+|                             |           | - Salvage Only                                                                  |
+|                             |           | - Severely Damaged                                                              |
+|                             |           | - Major Deductions 2                                                            |
+|                             |           | - Major Deductions 1                                                            |
+|                             |           | - Moderate Deductions                                                           |
+|                             |           | - Minor Deductions 2                                                            |
+|                             |           | - Minor Deductions 1                                                            |
+|                             |           | - Typical Functionality                                                         |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `fireplaces`                | _Numeric_ | Number of fireplaces                                                            |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `fireplace_quality`         | _Nominal_ | Fireplace quality                                                               |
+|                             |           |                                                                                 |
+|                             |           | - No Fireplace                                                                  |
+|                             |           | - Poor                                                                          |
+|                             |           | - Fair                                                                          |
+|                             |           | - Average Typical                                                               |
+|                             |           | - Good                                                                          |
+|                             |           | - Excellent                                                                     |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `garage_type`               | _Nominal_ | Garage location                                                                 |
+|                             |           |                                                                                 |
+|                             |           | - More than One Type                                                            |
+|                             |           | - Attached to Home                                                              |
+|                             |           | - Basement Garage                                                               |
+|                             |           | - Built-In                                                                      |
+|                             |           | - Car Port                                                                      |
+|                             |           | - Detached from Home                                                            |
+|                             |           | - No Garage                                                                     |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `garage_year_built`         | _Numeric_ | Year garage was built                                                           |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `garage_finish`             | _Nominal_ | Interior finish of the garage                                                   |
+|                             |           |                                                                                 |
+|                             |           | - No Garage                                                                     |
+|                             |           | - Finished                                                                      |
+|                             |           | - Rough Finished                                                                |
+|                             |           | - Unfinished                                                                    |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `garage_cars`               | _Numeric_ | Size of garage in car capacity                                                  |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `garage_area`               | _Numeric_ | Size of garage in square feet                                                   |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `garage_quality`            | _Nominal_ | Garage quality                                                                  |
+|                             |           |                                                                                 |
+|                             |           | - No Garage                                                                     |
+|                             |           | - Poor                                                                          |
+|                             |           | - Fair                                                                          |
+|                             |           | - Average Typical                                                               |
+|                             |           | - Good                                                                          |
+|                             |           | - Excellent                                                                     |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `garage_condition`          | _Nominal_ | Garage condition                                                                |
+|                             |           |                                                                                 |
+|                             |           | - No Garage                                                                     |
+|                             |           | - Poor                                                                          |
+|                             |           | - Fair                                                                          |
+|                             |           | - Average Typical                                                               |
+|                             |           | - Good                                                                          |
+|                             |           | - Excellent                                                                     |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `paved_drive`               | _Nominal_ | Garage condition                                                                |
+|                             |           |                                                                                 |
+|                             |           | - Paved                                                                         |
+|                             |           | - Partial Pavement                                                              |
+|                             |           | - Dirt Gravel                                                                   |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `wood_deck_area`            | _Numeric_ | Wood deck area in square feet                                                   |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `open_porch_area`           | _Numeric_ | Open porch area in square feet                                                  |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `enclosed_porch_area`       | _Numeric_ | Enclosed porch area in square feet                                              |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `three_season_porch_area`   | _Numeric_ | Three season porch area in square feet                                          |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `screen_porch_area`         | _Numeric_ | Screen porch area in square feet                                                |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `pool_area`                 | _Numeric_ | Pool area in square feet                                                        |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `pool_quality`              | _Nominal_ | Pool quality                                                                    |
+|                             |           |                                                                                 |
+|                             |           | - No Pool                                                                       |
+|                             |           | - Fair                                                                          |
+|                             |           | - Average Typical                                                               |
+|                             |           | - Good                                                                          |
+|                             |           | - Excellent                                                                     |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `fence`                     | _Nominal_ | Fence quality                                                                   |
+|                             |           |                                                                                 |
+|                             |           | - No Fence                                                                      |
+|                             |           | - Minimum Wood Wire                                                             |
+|                             |           | - Good Wood                                                                     |
+|                             |           | - Minimum Privacy                                                               |
+|                             |           | - Good Privacy                                                                  |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `misc_feature`              | _Nominal_ | Miscellaneous feature not covered in other categories                           |
+|                             |           |                                                                                 |
+|                             |           | - Elevator                                                                      |
+|                             |           | - Second Garage if not Described in Garage Section                              |
+|                             |           | - Other                                                                         |
+|                             |           | - Shed over 100 SF                                                              |
+|                             |           | - Tennis Court                                                                  |
+|                             |           | - None                                                                          |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `misc_value`                | _Numeric_ | Value of miscellaneous feature ($)                                              |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `month_sold`                | _Numeric_ | Month Sold                                                                      |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `year_sold`                 | _Numeric_ | Year Sold                                                                       |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `sale_type`                 | _Nominal_ | Type of sale                                                                    |
+|                             |           |                                                                                 |
+|                             |           | - Warranty Deed Conventional                                                    |
+|                             |           | - Warranty Deed Cash                                                            |
+|                             |           | - Warranty Deed VA Loan                                                         |
+|                             |           | - Home just Constructed and Sold                                                |
+|                             |           | - Court Officer Deed Estate                                                     |
+|                             |           | - Contract 15 Down Payment Regular Terms                                        |
+|                             |           | - Contract Low Down Payment and Low Interest                                    |
+|                             |           | - Contract Low Interest                                                         |
+|                             |           | - Contract Low Down                                                             |
+|                             |           | - Other                                                                         |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `sale_condition`            | _Nominal_ | Type of sale                                                                    |
+|                             |           |                                                                                 |
+|                             |           | - Normal Sale                                                                   |
+|                             |           | - Abnormal Sale                                                                 |
+|                             |           | - Adjoining Land Purchase                                                       |
+|                             |           | - Allocation                                                                    |
+|                             |           | - Sale between Family Members                                                   |
+|                             |           | - Home was not Completed when Last Assessed                                     |
++-----------------------------+-----------+---------------------------------------------------------------------------------+
+| `sale_price`                | _Numeric_ | Sale price ($)                                                                  |
++-----------------------------+-----------+---------------------------------------------------------------------------------+

@@ -7,6 +7,12 @@ website:
   
   navbar:
     search: true
+    
+  sidebar:
+    style: docked
+    alignment: left
+    contents: 
+    - data-dictionary.qmd
 
 format:
   html:
