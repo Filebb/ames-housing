@@ -1,0 +1,115 @@
+# Sale Price
+
+```{r}
+#| echo: false
+library(tidyverse)
+ames <- read_rds(file = "data/ames-renamed.RDS")
+```
+
+
+```{r}
+#| code-fold: true
+library(ggthemes)
+library(scales)
+
+theme_set(
+  theme_pander() +
+    
+    theme(plot.title = element_text(size = 16), # hjust = .5
+          axis.title = element_text(size = 13),
+          axis.text  = element_text(size = 11, colour = "grey70")
+    )
+)
+
+# https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule
+bin_width <- 2 * IQR(ames$sale_price) / length(ames$sale_price)^(1/3)
+
+ames |> 
+  ggplot(mapping = aes(x = sale_price)) +
+  
+  geom_histogram(binwidth = bin_width, alpha = 1, size = 1.25,
+                 col = "white", fill = "orange2") +
+  
+  geom_density(aes(y = after_stat(count) * bin_width),
+               col = "gray30",
+               linewidth = 0.75) +
+  
+  stat_function(fun = function(x) dnorm(x, mean = mean(ames$sale_price), sd = sd(ames$sale_price)) * length(ames$sale_price) * bin_width, linewidth = 0.75) +
+  # geom_vline(mapping = aes(xintercept = mean(sale_price),
+  #                          col = "mean"),
+  #            linetype = 5,linewidth = 1.25) +
+  # 
+  # geom_vline(mapping = aes(xintercept = median(sale_price),
+  #                          col = "median"),
+  #            linetype = 5, linewidth = 1.25) +
+  
+  scale_x_continuous(label = label_number(scale_cut = cut_short_scale())) +
+  
+  xlab("Sale Price ($)") +
+  
+  ylab("Count") +
+  
+  ggtitle("Sale Price Distribution") +
+  
+  scale_color_manual(name = "Statistics",
+                     values=c("mean" = "steelblue", "median" = "tomato2")) +
+  
+  theme(legend.position   = c(0.9, 0.9),
+        legend.title      = element_blank(),
+        legend.text       = element_text(size = 16))
+```
+
+
+
+
+
+
+
+```{r}
+#| code-fold: true
+theme_set(
+  theme_pander() +
+    
+    theme(plot.title = element_text(size = 16), # hjust = .5
+          axis.title = element_text(size = 13),
+          axis.text  = element_text(size = 11, colour = "grey70")
+    )
+)
+
+# https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule
+bin_width <- 2 * IQR(log10(ames$sale_price)) / length(log10(ames$sale_price))^(1/3)
+
+ames |> 
+  ggplot(mapping = aes(x = log10(sale_price))) +
+  
+  geom_histogram(binwidth = bin_width, alpha = 1, size = 1.25,
+                 col = "white", fill = "orange2") +
+  
+  geom_density(aes(y = after_stat(count) * bin_width),
+               col = "gray30",
+               linewidth = 0.75) +
+  
+  stat_function(fun = function(x) dnorm(x, mean = mean(log10(ames$sale_price)), sd = sd(log10(ames$sale_price))) * length(ames$sale_price) * bin_width, linewidth = 0.75) +
+  # geom_vline(mapping = aes(xintercept = mean(sale_price),
+  #                          col = "mean"),
+  #            linetype = 5,linewidth = 1.25) +
+  # 
+  # geom_vline(mapping = aes(xintercept = median(sale_price),
+  #                          col = "median"),
+  #            linetype = 5, linewidth = 1.25) +
+  
+  scale_x_continuous(label = label_number(scale_cut = cut_short_scale())) +
+  
+  xlab("Sale Price ($)") +
+  
+  ylab("Count") +
+  
+  ggtitle("Sale Price Distribution") +
+  
+  scale_color_manual(name = "Statistics",
+                     values=c("mean" = "steelblue", "median" = "tomato2")) +
+  
+  theme(legend.position   = c(0.9, 0.9),
+        legend.title      = element_blank(),
+        legend.text       = element_text(size = 16))
+```

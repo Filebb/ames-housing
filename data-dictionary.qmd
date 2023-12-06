@@ -1,13 +1,112 @@
 # Data Dictionary
 
+```{r}
+#| label: variables names cleaning
+#| code-fold: true
+library(tidyverse)
+library(AmesHousing)
+
+ames <- ames_raw |>
+
+    rename(id                        = Order,
+           pid                       = PID,
+           ms_sub_class              = `MS SubClass`,
+           ms_zoning                 = `MS Zoning`,
+           lot_frontage              = `Lot Frontage`,
+           lot_area                  = `Lot Area`,
+           street                    = Street,
+           alley                     = Alley,
+           lot_shape                 = `Lot Shape`,
+           land_contour              = `Land Contour`,
+           utilities                 = Utilities,
+           lot_configuration         = `Lot Config`,
+           land_slope                = `Land Slope`,
+           neighborhood              = Neighborhood,
+           condition_1               = `Condition 1`,
+           condition_2               = `Condition 2`,
+           building_type             = `Bldg Type`,
+           house_style               = `House Style`,
+           overall_quality           = `Overall Qual`,
+           overall_condition         = `Overall Cond`,
+           year_built                = `Year Built`,
+           year_remod_add            = `Year Remod/Add`,
+           roof_style                = `Roof Style`,
+           roof_material             = `Roof Matl`,
+           exterior_1st              = `Exterior 1st`,
+           exterior_2nd              = `Exterior 2nd`,
+           masonry_veneer_type       = `Mas Vnr Type`,
+           masonry_veneer_area       = `Mas Vnr Area`,
+           exterior_quality          = `Exter Qual`,
+           exterior_condition        = `Exter Cond`,
+           foundation                = Foundation,
+           basement_quality          = `Bsmt Qual`,
+           basement_condition        = `Bsmt Cond`,
+           basement_exposure         = `Bsmt Exposure`,
+           basement_finished_type_1  = `BsmtFin Type 1`,
+           basement_area_type_1      = `BsmtFin SF 1`,
+           basement_finished_type_2  = `BsmtFin Type 2`,
+           basement_area_type_2      = `BsmtFin SF 2`,
+           basement_unfinished_area  = `Bsmt Unf SF`,
+           basement_total_area       = `Total Bsmt SF`,
+           heating                   = Heating,
+           heating_quality           = `Heating QC`,
+           central_air               = `Central Air`,
+           electrical                = Electrical,
+           first_floor_area          = `1st Flr SF`,
+           second_floor_area         = `2nd Flr SF`,
+           low_quality_finished_area = `Low Qual Fin SF`,
+           ground_living_area        = `Gr Liv Area`,
+           basement_full_bathrooms   = `Bsmt Full Bath`,
+           basement_half_bathrooms   = `Bsmt Half Bath`,
+           full_bathrooms            = `Full Bath`,
+           half_bathrooms            = `Half Bath`,
+           bedroom_above_ground      = `Bedroom AbvGr`,
+           kitchen_above_ground      = `Kitchen AbvGr`,
+           kitchen_quality           = `Kitchen Qual`,
+           total_rooms_above_ground  = `TotRms AbvGrd`,
+           functional                = Functional,
+           fireplaces                = Fireplaces,
+           fireplace_quality         = `Fireplace Qu`,
+           garage_type               = `Garage Type`,
+           garage_year_built         = `Garage Yr Blt`,
+           garage_finish             = `Garage Finish`,
+           garage_cars               = `Garage Cars`,
+           garage_area               = `Garage Area`,
+           garage_quality            = `Garage Qual`,
+           garage_condition          = `Garage Cond`,
+           paved_drive               = `Paved Drive`,
+           wood_deck_area            = `Wood Deck SF`,
+           open_porch_area           = `Open Porch SF`,
+           enclosed_porch_area       = `Enclosed Porch`,
+           three_season_porch_area   = `3Ssn Porch`,
+           screen_porch_area         = `Screen Porch`,
+           pool_area                 = `Pool Area`,
+           pool_quality              = `Pool QC`,
+           fence                     = Fence,
+           misc_feature              = `Misc Feature`,
+           misc_value                = `Misc Val`,
+           month_sold                = `Mo Sold`,
+           year_sold                 = `Yr Sold`,
+           sale_type                 = `Sale Type`,
+           sale_condition            = `Sale Condition`,
+           sale_price                =  SalePrice)
+```
+
+```{r}
+#| echo: false
+ames |> write_rds(file = "data/ames-renamed.RDS")
+```
+
+
+
 +-----------------------------+-----------+---------------------------------------------------------------------------------+
 | Variable Name               | Type      | Description                                                                     |
 +=============================+===========+=================================================================================+
-| `order`                     | _Numeric_ | Unique observation ID                                                           |
+| `id`                        | _Numeric_ | Unique observation ID                                                           |
 +-----------------------------+-----------+---------------------------------------------------------------------------------+
 | `pid`                       | _Nominal_ | Parcel identification number - can be used with city web site for parcel review |
 +-----------------------------+-----------+---------------------------------------------------------------------------------+
-| `ms_subclass`               | _Nominal_ | Identifies the type of dwelling involved in the sale                            |
+| `ms_sub_class`              | _Nominal_ | Identifies the type of dwelling involved in the sale                            |
 |                             |           |                                                                                 |
 |                             |           | - One Story 1946 and Newer All Styles                                           |
 |                             |           | - One Story 1945 and Older                                                      |
@@ -210,7 +309,7 @@
 |                             |           | - Wood Shakes                                                                   |
 |                             |           | - Wood Shingles                                                                 |
 +-----------------------------+-----------+---------------------------------------------------------------------------------+
-| `exterior_1`                | _Nominal_ | Exterior covering on house                                                      |
+| `exterior_1st`              | _Nominal_ | Exterior covering on house                                                      |
 |                             |           |                                                                                 |
 |                             |           | - Asbestos Shingles                                                             |
 |                             |           | - Asphalt Shingles                                                              |
@@ -230,7 +329,7 @@
 |                             |           | - Wood Siding                                                                   |
 |                             |           | - Wood Shingles                                                                 |
 +-----------------------------+-----------+---------------------------------------------------------------------------------+
-| `exterior_2`                | _Nominal_ | Exterior covering on house (if more than one material)                          |
+| `exterior_2nd`              | _Nominal_ | Exterior covering on house (if more than one material)                          |
 |                             |           |                                                                                 |
 |                             |           | - Asbestos Shingles                                                             |
 |                             |           | - Asphalt Shingles                                                              |
@@ -312,7 +411,7 @@
 |                             |           | - Average Exposure                                                              |
 |                             |           | - Good Exposure                                                                 |
 +-----------------------------+-----------+---------------------------------------------------------------------------------+
-| `basement_fin_type_1`       | _Nominal_ | Rating of basement finished area                                                |
+| `basement_finished_type_1`  | _Nominal_ | Rating of basement finished area                                                |
 |                             |           |                                                                                 |
 |                             |           | - No Basement                                                                   |
 |                             |           | - Unfinshed                                                                     |
@@ -324,7 +423,7 @@
 +-----------------------------+-----------+---------------------------------------------------------------------------------+
 | `basement_area_type_1`      | _Numeric_ | Type 1 finished square feet                                                     |
 +-----------------------------+-----------+---------------------------------------------------------------------------------+
-| `basement_fin_type_2`       | _Nominal_ | Rating of basement finished area (if multiple types)                            |
+| `basement_finished_type_2`  | _Nominal_ | Rating of basement finished area (if multiple types)                            |
 |                             |           |                                                                                 |
 |                             |           | - No Basement                                                                   |
 |                             |           | - Unfinshed                                                                     |

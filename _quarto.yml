@@ -13,6 +13,7 @@ website:
     alignment: left
     contents: 
       - data-dictionary.qmd
+      - sale-price.qmd
 
 format:
   html:
