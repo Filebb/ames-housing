@@ -1,0 +1,82 @@
+# Target Variable
+
+::: {.callout-note appearance="simple"}
+## Main Findings
+
+- The target variable `sale_price` has no missing values and looks skewed to the
+right
+
+- A logartihmic distribution solves well the skewness of the distribution
+
+:::
+
+## Distribution
+
+```{r}
+#| echo: false
+source(file = "functions/stats.R")
+source(file = "functions/plots.R")
+
+ames <- read_rds(file = "data/ames-renamed.RDS")
+```
+
+```{r}
+#| echo: false
+ames |> 
+  numeric_distribution(sale_price,
+                       xlabel = "Sale Price ($)",
+                       title  = "Sale Price Distribution")
+```
+
+## Numerical Summaries
+
+```{r}
+#| echo: false
+ames |>
+  numeric_summary_table(sale_price)
+```
+
+## Box-Cox transformation
+
+The following calculation suggests that a logarithm transformation should be
+applied to reduce skewness.
+
+[Reference](https://r-coder.com/box-cox-transformation-r/)
+
+```{r}
+b <- MASS::boxcox(lm(sale_price ~ 1, data = ames), plotit = FALSE)
+
+# Exact lambda
+b$x[which.max(b$y)]
+```
+
+Observe that after the logarithmic transformation there is still evidence that
+the variable is not normally distributed:
+
+```{r}
+ames |> 
+  mutate(sale_price = log10(sale_price)) |> 
+  pull() |> 
+  shapiro.test()
+```
+
+As the p-value is lower than `1%` level of significance we have evidence to
+reject the null hypothesis of normality.
+
+## Distribution after log10 Transformation
+
+```{r}
+#| echo: false
+ames |> 
+  numeric_distribution(log10(sale_price),
+                       xlabel = "log10(Sale Price ($))",
+                       title  = "Sale Price Distribution")
+```
+
+## Numerical Summaries after log10 Transformation
+
+```{r}
+#| echo: false
+ames |>
+  numeric_summary_table(log10(sale_price))
+```
