@@ -452,8 +452,7 @@ ames <- ames_raw |>
             "BrkFace" = "Brick Face",
             "CBlock"  = "Cinder Block",
             "None"    = "None",
-            "Stone"   = "Stone",
-            "None"    = "None"),
+            "Stone"   = "Stone"),
         
         # Mas Vnr Area (Continuous): Masonry veneer area in square feet
         
@@ -496,9 +495,24 @@ ames <- ames_raw |>
             "Stone"  = "Stone",
             "Wood"   = "Wood"),
         
-        # Bsmt Qual (Ordinal): Evaluates the height of the basement
+        # Basement imputation
         
-        basement_quality = replace_na(basement_quality, "No Basement"),
+        basement_quality         = if_else(basement_total_area %in% c(0, NA), replace_na(basement_quality,         "No Basement"), basement_quality),
+        basement_condition       = if_else(basement_total_area %in% c(0, NA), replace_na(basement_condition,       "No Basement"), basement_condition),
+        basement_exposure        = if_else(basement_total_area %in% c(0, NA), replace_na(basement_exposure,        "No Basement"), basement_exposure),
+        basement_finished_type_1 = if_else(basement_total_area %in% c(0, NA), replace_na(basement_finished_type_1, "No Basement"), basement_finished_type_1),
+        basement_area_type_1     = if_else(basement_total_area %in% c(0, NA), replace_na(basement_area_type_1,     0),             basement_area_type_1),
+        basement_finished_type_2 = if_else(basement_total_area %in% c(0, NA), replace_na(basement_finished_type_2, "No Basement"), basement_finished_type_2),
+        basement_area_type_2     = if_else(basement_total_area %in% c(0, NA), replace_na(basement_area_type_2,     0),             basement_area_type_2),
+        basement_unfinished_area = if_else(basement_total_area %in% c(0, NA), replace_na(basement_unfinished_area, 0),             basement_unfinished_area),
+        basement_total_area      = if_else(basement_total_area %in% c(0, NA), replace_na(basement_total_area,      0),             basement_total_area),
+        basement_full_bathrooms  = if_else(basement_total_area %in% c(0, NA), replace_na(basement_full_bathrooms,  0),             basement_full_bathrooms),
+        basement_half_bathrooms  = if_else(basement_total_area %in% c(0, NA), replace_na(basement_half_bathrooms,  0),             basement_half_bathrooms),
+        
+        basement_exposure        = replace_na(basement_exposure, "No"),
+        basement_finished_type_2 = replace_na(basement_finished_type_2, "Unf"),
+        
+        # Bsmt Qual (Ordinal): Evaluates the height of the basement
         
         basement_quality = recode_factor(
             
@@ -513,8 +527,6 @@ ames <- ames_raw |>
         
         # Bsmt Cond (Ordinal): Evaluates the general condition of the basement
         
-        basement_condition = replace_na(basement_condition, "No Basement"),
-        
         basement_condition = recode_factor(
             
             factor(basement_condition),
@@ -528,8 +540,6 @@ ames <- ames_raw |>
         
         # Bsmt Exposure	(Ordinal): Refers to walkout or garden level walls
         
-        basement_exposure = replace_na(basement_exposure, "No Basement"),
-        
         basement_exposure = recode_factor(
             
             factor(basement_exposure),
@@ -541,8 +551,6 @@ ames <- ames_raw |>
             "Gd"          = "Good Exposure"),
         
         # BsmtFin Type 1	(Ordinal): Rating of basement finished area
-        
-        basement_finished_type_1 = replace_na(basement_finished_type_1, "No Basement"),
         
         basement_finished_type_1 = recode_factor(
             
@@ -558,11 +566,7 @@ ames <- ames_raw |>
         
         # BsmtFin SF 1 (Continuous): Type 1 finished square feet
         
-        basement_area_type_1 = replace_na(basement_area_type_1, 0L),
-        
         # BsmtFinType 2	(Ordinal): Rating of basement finished area (if multiple types)
-        
-        basement_finished_type_2 = replace_na(basement_finished_type_2, "No Basement"),
         
         basement_finished_type_2 = recode_factor(
             
@@ -578,15 +582,9 @@ ames <- ames_raw |>
         
         # BsmtFin SF 2 (Continuous): Type 2 finished square feet
         
-        basement_area_type_2 = replace_na(basement_area_type_2, 0L),
-        
         # Bsmt Unf SF (Continuous): Unfinished square feet of basement area
         
-        basement_unfinished_area = replace_na(basement_unfinished_area, 0L),
-        
         # Total Bsmt SF (Continuous): Total square feet of basement area
-        
-        basement_total_area = replace_na(basement_total_area, 0L),
         
         # Heating (Nominal): Type of heating
         
@@ -650,11 +648,7 @@ ames <- ames_raw |>
         
         # Bsmt Full Bath (Discrete): Basement full bathrooms
         
-        basement_full_bathrooms = replace_na(basement_full_bathrooms, 0L),
-        
         # Bsmt Half Bath (Discrete): Basement half bathrooms
-        
-        basement_half_bathrooms = replace_na(basement_half_bathrooms, 0L),
         
         # Full Bath (Discrete): Full bathrooms above grade
         

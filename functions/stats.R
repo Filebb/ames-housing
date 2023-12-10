@@ -1,7 +1,6 @@
+library(gt)
 library(tidyverse)
 library(moments)
-
-library(gt)
 
 # NUMERICAL SUMMARIES FOR NUMERIC VARIABLES (output: tibble)
 numeric_summary <- function(x) {

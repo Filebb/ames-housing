@@ -3,8 +3,8 @@
 ```{r}
 #| label: load functions and data
 #| echo: false
-source(file = "functions/stats.R")
 source(file = "functions/plots.R")
+source(file = "functions/stats.R")
 
 ames <- read_rds(file = "data/ames-renamed.RDS")
 ```
@@ -78,8 +78,9 @@ ames |>
 #| echo: false
 ames |> 
     nominal_frequency_bar(ms_sub_class,
+                          order         = sale_price,
                           nominal_label = "MS Sub Class",
-                          title         = "Ms Sub Class Distribution")
+                          title         = "MS Sub Class Distribution")
 ```
 
 ## Relationship with Target Variable
@@ -143,6 +144,7 @@ ames |>
 #| echo: false
 ames |> 
     nominal_frequency_bar(ms_zoning,
+                          order         = sale_price,
                           nominal_label = "MS Zoning",
                           title         = "Ms Zoning Distribution")
 ```
@@ -213,9 +215,11 @@ ames |>
 #| label: lot_frontage vs sale_price
 #| echo: false
 ames |>
-    scatter_plot(x_numeric = lot_frontage, y_numeric = sale_price,
-                 "Lot Frontage (ft)", "Sale Price ($)",
-                 "Sale Price vs Lot Frontage")
+    scatter_plot(x_numeric = lot_frontage,
+                 y_numeric = sale_price,
+                 x_label   = "Lot Frontage (ft)",
+                 y_label   = "Sale Price ($)",
+                 title     = "Sale Price vs Lot Frontage")
 ```
 
 :::
@@ -264,8 +268,9 @@ ames |>
 ames |>
     scatter_plot(x_numeric = lot_area,
                  y_numeric = sale_price,
-                 "Lot Area (ft2)", "Sale Price ($)",
-                 "Sale Price vs Lot Area")
+                 x_label   = "Lot Area (ft2)",
+                 y_label   = "Sale Price ($)",
+                 title     = "Sale Price vs Lot Area")
 ```
 
 :::
@@ -311,6 +316,7 @@ ames |>
 #| echo: false
 ames |> 
     nominal_frequency_bar(street,
+                          order         = sale_price,
                           nominal_label = "Street",
                           title         = "Street Distribution")
 ```
@@ -346,7 +352,7 @@ ames |>
     summarise(NAs = sum(is.na(alley)))
 ```
 
-Missing values are coded as `"No Alley Access"`.
+Missing values are coded as `No Alley Access`.
 
 ```{r}
 #| label: alley reconding
@@ -383,6 +389,7 @@ ames |>
 #| echo: false
 ames |> 
     nominal_frequency_bar(alley,
+                          order         = sale_price,
                           nominal_label = "Alley",
                           title         = "Alley Distribution")
 ```
@@ -445,6 +452,7 @@ ames |>
 #| echo: false
 ames |> 
     nominal_frequency_bar(lot_shape,
+                          order         = sale_price,
                           nominal_label = "Lot Shape",
                           title         = "Lot Shape Distribution")
 ```
@@ -507,6 +515,7 @@ ames |>
 #| echo: false
 ames |> 
     nominal_frequency_bar(land_contour,
+                          order         = sale_price,
                           nominal_label = "Land Contour",
                           title         = "Land Contour Distribution")
 ```
@@ -568,6 +577,7 @@ ames |>
 #| echo: false
 ames |> 
     nominal_frequency_bar(utilities,
+                          order         = sale_price,
                           nominal_label = "Utilities",
                           title         = "Utilities Distribution")
 ```
@@ -631,6 +641,7 @@ ames |>
 #| echo: false
 ames |> 
     nominal_frequency_bar(lot_configuration,
+                          order         = sale_price,
                           nominal_label = "Lot Configuration",
                           title         = "Lot Configuration Distribution")
 ```
@@ -692,6 +703,7 @@ ames |>
 #| echo: false
 ames |> 
     nominal_frequency_bar(land_slope,
+                          order         = sale_price,
                           nominal_label = "Land Slope",
                           title         = "Land Slope Distribution")
 ```
@@ -779,6 +791,7 @@ ames |>
 #| echo: false
 ames |> 
     nominal_frequency_bar(neighborhood,
+                          order         = sale_price,
                           nominal_label = "Neighborhood",
                           title         = "Neighborhood Distribution")
 ```
@@ -846,6 +859,7 @@ ames |>
 #| echo: false
 ames |> 
     nominal_frequency_bar(condition_1,
+                          order         = sale_price,
                           nominal_label = "Condition 1",
                           title         = "Condition 1 Distribution")
 ```
@@ -913,6 +927,7 @@ ames |>
 #| echo: false
 ames |> 
     nominal_frequency_bar(condition_2,
+                          order         = sale_price,
                           nominal_label = "Condition 2",
                           title         = "Condition 2 Distribution")
 ```
@@ -976,6 +991,7 @@ ames |>
 #| echo: false
 ames |> 
     nominal_frequency_bar(building_type,
+                          order         = sale_price,
                           nominal_label = "Building Type",
                           title         = "Building Type Distribution")
 ```
@@ -1042,6 +1058,7 @@ ames |>
 #| echo: false
 ames |> 
     nominal_frequency_bar(house_style,
+                          order         = sale_price,
                           nominal_label = "House Style",
                           title         = "House Style Distribution")
 ```
@@ -1093,6 +1110,7 @@ ames |>
 #| echo: false
 ames |> 
     nominal_frequency_bar(overall_quality,
+                          order         = sale_price,
                           nominal_label = "Overall Quality",
                           title         = "Overall Quality Distribution")
 ```
@@ -1144,6 +1162,7 @@ ames |>
 #| echo: false
 ames |> 
     nominal_frequency_bar(overall_condition,
+                          order         = sale_price,
                           nominal_label = "Overall Condition",
                           title         = "Overall Condition Distribution")
 ```
@@ -1230,6 +1249,7 @@ ames |>
 #| echo: false
 ames |> 
     nominal_frequency_bar(roof_style,
+                          order         = sale_price,
                           nominal_label = "Roof Style",
                           title         = "Roof Style Distribution")
 ```
@@ -1296,6 +1316,7 @@ ames |>
 #| echo: false
 ames |> 
     nominal_frequency_bar(roof_material,
+                          order         = sale_price,
                           nominal_label = "Roof Material",
                           title         = "Roof Material Distribution")
 ```
@@ -1371,6 +1392,7 @@ ames |>
 #| echo: false
 ames |> 
     nominal_frequency_bar(exterior_1st,
+                          order         = sale_price,
                           nominal_label = "Exterior 1st",
                           title         = "Exterior 1st Distribution")
 ```
@@ -1446,6 +1468,7 @@ ames |>
 #| echo: false
 ames |> 
     nominal_frequency_bar(exterior_2nd,
+                          order         = sale_price,
                           nominal_label = "Exterior 2nd",
                           title         = "Exterior 2nd Distribution")
 ```
@@ -1464,3 +1487,1146 @@ ames |>
 ```
 
 :::
+
+## masonry_veneer_type
+
+Nominal Variable.
+
+Masonry veneer type.
+
+::: {.panel-tabset}
+
+## Missing Values
+
+```{r}
+#| label: masonry_veneer_type missing values
+ames |> 
+    summarise(NAs = sum(is.na(masonry_veneer_type)))
+```
+
+Missing values are coded as `None`.
+
+```{r}
+#| label: masonry_veneer_type reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        masonry_veneer_type = replace_na(masonry_veneer_type, "None"),
+        
+        masonry_veneer_type = recode_factor(
+            
+            factor(masonry_veneer_type),
+            
+            "BrkCmn"  = "Brick Common",
+            "BrkFace" = "Brick Face",
+            "CBlock"  = "Cinder Block",
+            "Stone"   = "Stone",
+            "None"    = "None"
+        )
+    )
+```
+
+## Frequency Table
+
+```{r}
+#| label: masonry_veneer_type frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(masonry_veneer_type)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: masonry_veneer_type frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(masonry_veneer_type,
+                          order         = sale_price,
+                          nominal_label = "Masonry Veneer Type",
+                          title         = "Masonry Veneer Type Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: masonry_veneer_type vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = masonry_veneer_type,
+                        nominal_label = "Masonry Veneer Type",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Masonry Veneer Type vs Sale Price")
+```
+
+:::
+
+## masonry_veneer_area
+
+Numeric Variable.
+
+Linear feet of street connected to property.
+
+::: {.panel-tabset}
+
+## Missing Values
+
+```{r}
+#| label: masonry_veneer_area missing values
+ames |> 
+    summarise(NAs = sum(is.na(masonry_veneer_area)))
+```
+
+When values are missing we assume that the value is zero.
+
+```{r}
+#| label: masonry_veneer_area impute
+#| code-fold: true
+ames <- ames |> 
+    mutate(masonry_veneer_area = replace_na(masonry_veneer_area, 0))
+```
+
+## Distribution
+
+```{r}
+#| label: masonry_veneer_area distribution
+#| echo: false
+ames |> 
+    numeric_distribution(masonry_veneer_area,
+                         xlabel = "Masonry Veneer Area (ft2)",
+                         title  = "Masonry Veneer Area Distribution")
+```
+
+## Summary Statistics
+
+```{r}
+#| label: masonry_veneer_area summary statistics
+#| echo: false
+ames |>
+    numeric_summary_table(masonry_veneer_area)
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: masonry_veneer_area vs sale_price
+#| echo: false
+ames |>
+    scatter_plot(x_numeric = masonry_veneer_area,
+                 y_numeric = sale_price,
+                 x_label   = "Masonry Veneer Area (ft2)",
+                 y_label   = "Sale Price ($)",
+                 title     = "Sale Price vs Masonry Veneer Area")
+```
+
+:::
+
+## exterior_quality
+
+Nominal Variable.
+
+Evaluates the quality of the material on the exterior.
+
+```{r}
+#| label: exterior_quality reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        exterior_quality =
+            recode_factor(
+                
+                factor(exterior_quality),
+                
+                "Po" = "Poor",
+                "Fa" = "Fair",
+                "TA" = "Average Typical",
+                "Gd" = "Good",
+                "Ex" = "Excellent"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: exterior_quality frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(exterior_quality)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: exterior_quality frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(exterior_quality,
+                          order         = sale_price,
+                          nominal_label = "Exterior Quality",
+                          title         = "Exterior Quality Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: exterior_quality vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = exterior_quality,
+                        nominal_label = "Exterior Quality",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Exterior Quality vs Sale Price")
+```
+
+:::
+
+## exterior_condition
+
+Nominal Variable.
+
+Evaluates the present condition of the material on the exterior.
+
+```{r}
+#| label: exterior_condition reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        exterior_condition =
+            recode_factor(
+                
+                factor(exterior_condition),
+                
+                "Po" = "Poor",
+                "Fa" = "Fair",
+                "TA" = "Average Typical",
+                "Gd" = "Good",
+                "Ex" = "Excellent"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: exterior_condition frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(exterior_condition)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: exterior_condition frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(exterior_condition,
+                          order         = sale_price,
+                          nominal_label = "Exterior Condition",
+                          title         = "Exterior Condition Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: exterior_condition vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = exterior_condition,
+                        nominal_label = "Exterior Condition",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Exterior Condition vs Sale Price")
+```
+
+:::
+
+## foundation
+
+Nominal Variable.
+
+Type of foundation.
+
+```{r}
+#| label: foundation reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        foundation =
+            recode_factor(
+                
+                factor(foundation),
+                
+                "BrkTil" = "Brick and Tile",
+                "CBlock" = "Cinder Block",
+                "PConc"  = "Poured Contrete",
+                "Slab"   = "Slab",
+                "Stone"  = "Stone",
+                "Wood"   = "Wood"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: foundation frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(foundation)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: foundation frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(foundation,
+                          order         = sale_price,
+                          nominal_label = "Foundation",
+                          title         = "Foundation Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: foundation vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = foundation,
+                        nominal_label = "Foundation",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Foundation vs Sale Price")
+```
+
+:::
+
+## Basement Variables Imputation
+
+In most of the cases missing values are assumed to come from houses with no
+basement. There are few exceptions that are describe in detail in the following
+note.
+
+::: {.callout-note collapse=true}
+```{r}
+#| label: basement imputation
+# number of missing values across basement variables
+ames |> 
+    select(contains("basement")) |> 
+    map_int(~sum(is.na(.)))
+
+# missing values appear most of the times when
+# basement_total_area = 0 (the I interpret as no basement)
+ames |> 
+    select(contains("basement")) |> 
+    filter(basement_total_area == 0) |> 
+    map_int(~sum(is.na(.)))
+
+# we can impute the nominal variables of these cases with "No Basement"
+# and the numeric variables with 0
+ames |> 
+    select(contains("basement")) |> 
+    mutate(
+        basement_quality         = if_else(basement_total_area == 0, replace_na(basement_quality,         "No Basement"), basement_quality),
+        basement_condition       = if_else(basement_total_area == 0, replace_na(basement_condition,       "No Basement"), basement_condition),
+        basement_exposure        = if_else(basement_total_area == 0, replace_na(basement_exposure,        "No Basement"), basement_exposure),
+        basement_finished_type_1 = if_else(basement_total_area == 0, replace_na(basement_finished_type_1, "No Basement"), basement_finished_type_1),
+        basement_finished_type_2 = if_else(basement_total_area == 0, replace_na(basement_finished_type_2, "No Basement"), basement_finished_type_2),
+        basement_full_bathrooms  = if_else(basement_total_area == 0, replace_na(basement_full_bathrooms,  0),             basement_full_bathrooms),
+        basement_half_bathrooms  = if_else(basement_total_area == 0, replace_na(basement_half_bathrooms,  0),             basement_half_bathrooms)
+    ) |> 
+    map_int(~sum(is.na(.)))
+
+# what remains? let's have a look
+ames |> 
+    select(id, contains("basement")) |> 
+    mutate(
+        basement_quality         = if_else(basement_total_area == 0, replace_na(basement_quality,         "No Basement"), basement_quality),
+        basement_condition       = if_else(basement_total_area == 0, replace_na(basement_condition,       "No Basement"), basement_condition),
+        basement_exposure        = if_else(basement_total_area == 0, replace_na(basement_exposure,        "No Basement"), basement_exposure),
+        basement_finished_type_1 = if_else(basement_total_area == 0, replace_na(basement_finished_type_1, "No Basement"), basement_finished_type_1),
+        basement_finished_type_2 = if_else(basement_total_area == 0, replace_na(basement_finished_type_2, "No Basement"), basement_finished_type_2),
+        basement_full_bathrooms  = if_else(basement_total_area == 0, replace_na(basement_full_bathrooms,  0),             basement_full_bathrooms),
+        basement_half_bathrooms  = if_else(basement_total_area == 0, replace_na(basement_half_bathrooms,  0),             basement_half_bathrooms)
+    ) |> 
+    filter(if_any(everything(), is.na))
+
+# when basement_total_area is NA then I assume "No Basement"
+# (or 0 for numerica variables)
+ames |> 
+    select(id, contains("basement")) |> 
+    mutate(
+        basement_quality         = if_else(basement_total_area %in% c(0, NA), replace_na(basement_quality,         "No Basement"), basement_quality),
+        basement_condition       = if_else(basement_total_area %in% c(0, NA), replace_na(basement_condition,       "No Basement"), basement_condition),
+        basement_exposure        = if_else(basement_total_area %in% c(0, NA), replace_na(basement_exposure,        "No Basement"), basement_exposure),
+        basement_finished_type_1 = if_else(basement_total_area %in% c(0, NA), replace_na(basement_finished_type_1, "No Basement"), basement_finished_type_1),
+        basement_area_type_1     = if_else(basement_total_area %in% c(0, NA), replace_na(basement_area_type_1,     0),             basement_area_type_1),
+        basement_finished_type_2 = if_else(basement_total_area %in% c(0, NA), replace_na(basement_finished_type_2, "No Basement"), basement_finished_type_2),
+        basement_area_type_2     = if_else(basement_total_area %in% c(0, NA), replace_na(basement_area_type_2,     0),             basement_area_type_2),
+        basement_unfinished_area = if_else(basement_total_area %in% c(0, NA), replace_na(basement_unfinished_area, 0),             basement_unfinished_area),
+        basement_total_area      = if_else(basement_total_area %in% c(0, NA), replace_na(basement_total_area,      0),             basement_total_area),
+        basement_full_bathrooms  = if_else(basement_total_area %in% c(0, NA), replace_na(basement_full_bathrooms,  0),             basement_full_bathrooms),
+        basement_half_bathrooms  = if_else(basement_total_area %in% c(0, NA), replace_na(basement_half_bathrooms,  0),             basement_half_bathrooms)
+    ) |> 
+    filter(if_any(everything(), is.na)) |> 
+    map_int(~sum(is.na(.)))
+
+# for the remaining cases I impute "No" for basement_exposure
+# and "Unf" for basement_finished_type_2
+ames |> 
+    select(id, contains("basement")) |> 
+    mutate(
+        basement_quality         = if_else(basement_total_area %in% c(0, NA), replace_na(basement_quality,         "No Basement"), basement_quality),
+        basement_condition       = if_else(basement_total_area %in% c(0, NA), replace_na(basement_condition,       "No Basement"), basement_condition),
+        basement_exposure        = if_else(basement_total_area %in% c(0, NA), replace_na(basement_exposure,        "No Basement"), basement_exposure),
+        basement_finished_type_1 = if_else(basement_total_area %in% c(0, NA), replace_na(basement_finished_type_1, "No Basement"), basement_finished_type_1),
+        basement_area_type_1     = if_else(basement_total_area %in% c(0, NA), replace_na(basement_area_type_1,     0),             basement_area_type_1),
+        basement_finished_type_2 = if_else(basement_total_area %in% c(0, NA), replace_na(basement_finished_type_2, "No Basement"), basement_finished_type_2),
+        basement_area_type_2     = if_else(basement_total_area %in% c(0, NA), replace_na(basement_area_type_2,     0),             basement_area_type_2),
+        basement_unfinished_area = if_else(basement_total_area %in% c(0, NA), replace_na(basement_unfinished_area, 0),             basement_unfinished_area),
+        basement_total_area      = if_else(basement_total_area %in% c(0, NA), replace_na(basement_total_area,      0),             basement_total_area),
+        basement_full_bathrooms  = if_else(basement_total_area %in% c(0, NA), replace_na(basement_full_bathrooms,  0),             basement_full_bathrooms),
+        basement_half_bathrooms  = if_else(basement_total_area %in% c(0, NA), replace_na(basement_half_bathrooms,  0),             basement_half_bathrooms)
+    ) |> 
+    filter(if_any(everything(), is.na)) |> 
+    mutate(
+        basement_exposure        = replace_na(basement_exposure, "No"),
+        basement_finished_type_2 = replace_na(basement_finished_type_2, "Unf")
+    ) |> 
+    map_int(~sum(is.na(.)))
+
+# we can now overwrite the dataset imputing basement variables as explained
+ames <- ames |> 
+    mutate(
+        basement_quality         = if_else(basement_total_area %in% c(0, NA), replace_na(basement_quality,         "No Basement"), basement_quality),
+        basement_condition       = if_else(basement_total_area %in% c(0, NA), replace_na(basement_condition,       "No Basement"), basement_condition),
+        basement_exposure        = if_else(basement_total_area %in% c(0, NA), replace_na(basement_exposure,        "No Basement"), basement_exposure),
+        basement_finished_type_1 = if_else(basement_total_area %in% c(0, NA), replace_na(basement_finished_type_1, "No Basement"), basement_finished_type_1),
+        basement_area_type_1     = if_else(basement_total_area %in% c(0, NA), replace_na(basement_area_type_1,     0),             basement_area_type_1),
+        basement_finished_type_2 = if_else(basement_total_area %in% c(0, NA), replace_na(basement_finished_type_2, "No Basement"), basement_finished_type_2),
+        basement_area_type_2     = if_else(basement_total_area %in% c(0, NA), replace_na(basement_area_type_2,     0),             basement_area_type_2),
+        basement_unfinished_area = if_else(basement_total_area %in% c(0, NA), replace_na(basement_unfinished_area, 0),             basement_unfinished_area),
+        basement_total_area      = if_else(basement_total_area %in% c(0, NA), replace_na(basement_total_area,      0),             basement_total_area),
+        basement_full_bathrooms  = if_else(basement_total_area %in% c(0, NA), replace_na(basement_full_bathrooms,  0),             basement_full_bathrooms),
+        basement_half_bathrooms  = if_else(basement_total_area %in% c(0, NA), replace_na(basement_half_bathrooms,  0),             basement_half_bathrooms),
+        
+        basement_exposure        = replace_na(basement_exposure, "No"),
+        basement_finished_type_2 = replace_na(basement_finished_type_2, "Unf")
+    )
+```
+
+:::
+
+## basement_quality
+
+Nominal Variable.
+
+Evaluates the height of the basement.
+
+```{r}
+#| label: basement_quality reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        basement_quality =
+            recode_factor(
+                
+                factor(basement_quality),
+                
+                "No Basement" = "No Basement",
+                "Po"          = "Poor",
+                "Fa"          = "Fair",
+                "TA"          = "Average Typical",
+                "Gd"          = "Good",
+                "Ex"          = "Excellent"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: basement_quality frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(basement_quality)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: basement_quality frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(basement_quality,
+                          order         = sale_price,
+                          nominal_label = "Basement Quality",
+                          title         = "Basement Quality Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: basement_quality vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = basement_quality,
+                        nominal_label = "Basement Quality",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Basement Quality vs Sale Price")
+```
+
+:::
+
+## basement_condition
+
+Nominal Variable.
+
+Evaluates the general condition of the basement.
+
+```{r}
+#| label: basement_condition reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        basement_condition =
+            recode_factor(
+                
+                factor(basement_condition),
+                
+                "No Basement" = "No Basement",
+                "Po"          = "Poor",
+                "Fa"          = "Fair",
+                "TA"          = "Average Typical",
+                "Gd"          = "Good",
+                "Ex"          = "Excellent"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: basement_condition frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(basement_condition)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: basement_condition frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(basement_condition,
+                          order         = sale_price,
+                          nominal_label = "Basement Condition",
+                          title         = "Basement Condition Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: basement_condition vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = basement_condition,
+                        nominal_label = "Basement Condition",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Basement Condition vs Sale Price")
+```
+
+:::
+
+## basement_exposure
+
+Nominal Variable.
+
+Refers to walkout or garden level walls.
+
+```{r}
+#| label: basement_exposure reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        basement_exposure =
+            recode_factor(
+                
+                factor(basement_exposure),
+                
+                "No Basement" = "No Basement",
+                "No"          = "No Exposure",
+                "Mn"          = "Minimum Exposure",
+                "Av"          = "Average Exposure",
+                "Gd"          = "Good Exposure"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: basement_exposure frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(basement_exposure)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: basement_exposure frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(basement_exposure,
+                          order         = sale_price,
+                          nominal_label = "Basement Exposure",
+                          title         = "Basement Exposure Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: basement_exposure vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = basement_exposure,
+                        nominal_label = "Basement Exposure",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Basement Exposure vs Sale Price")
+```
+
+:::
+
+## basement_finished_type_1
+
+Nominal Variable.
+
+Rating of basement finished area.
+
+```{r}
+#| label: basement_finished_type_1 reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        basement_finished_type_1 =
+            recode_factor(
+                
+                factor(basement_finished_type_1),
+                
+                "No Basement" = "No Basement",
+                "Unf"         = "Unfinshed",
+                "LwQ"         = "Low Quality",
+                "Rec"         = "Average Rec Room",
+                "BLQ"         = "Below Average Living Quarters",
+                "ALQ"         = "Average Living Quarters",
+                "GLQ"         = "Good Living Quarters"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: basement_finished_type_1 frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(basement_finished_type_1)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: basement_finished_type_1 frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(basement_finished_type_1,
+                          order         = sale_price,
+                          nominal_label = "Basement Finished Type 1",
+                          title         = "Basement Finished Type 1 Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: basement_finished_type_1 vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = basement_finished_type_1,
+                        nominal_label = "Basement Finished Type 1",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Basement Finished Type 1 vs Sale Price")
+```
+
+:::
+
+## basement_area_type_1
+
+Numeric Variable.
+
+Type 1 finished square feet.
+
+::: {.panel-tabset}
+
+## Distribution
+
+```{r}
+#| label: basement_area_type_1 distribution
+#| echo: false
+ames |> 
+    numeric_distribution(basement_area_type_1,
+                         xlabel = "Basement Area Type 1 (ft2)",
+                         title  = "Basement Area Type 1 Distribution")
+```
+
+## Summary Statistics
+
+```{r}
+#| label: basement_area_type_1 summary statistics
+#| echo: false
+ames |>
+    numeric_summary_table(basement_area_type_1)
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: basement_area_type_1 vs sale_price
+#| echo: false
+ames |>
+    scatter_plot(x_numeric = basement_area_type_1,
+                 y_numeric = sale_price,
+                 x_label   = "Basement Area Type 1 (ft2)",
+                 y_label   = "Sale Price ($)",
+                 title     = "Sale Price vs Basement Area Type 1")
+```
+
+:::
+
+## basement_finished_type_2
+
+Nominal Variable.
+
+Rating of basement finished area.
+
+```{r}
+#| label: basement_finished_type_2 reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        basement_finished_type_2 =
+            recode_factor(
+                
+                factor(basement_finished_type_2),
+                
+                "No Basement" = "No Basement",
+                "Unf"         = "Unfinshed",
+                "LwQ"         = "Low Quality",
+                "Rec"         = "Average Rec Room",
+                "BLQ"         = "Below Average Living Quarters",
+                "ALQ"         = "Average Living Quarters",
+                "GLQ"         = "Good Living Quarters"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: basement_finished_type_2 frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(basement_finished_type_2)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: basement_finished_type_2 frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(basement_finished_type_2,
+                          order         = sale_price,
+                          nominal_label = "Basement Finished Type 2",
+                          title         = "Basement Finished Type 2 Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: basement_finished_type_2 vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = basement_finished_type_2,
+                        nominal_label = "Basement Finished Type 2",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Basement Finished Type 2 vs Sale Price")
+```
+
+:::
+
+## basement_area_type_2
+
+Numeric Variable.
+
+Type 2 finished square feet.
+
+::: {.panel-tabset}
+
+## Distribution
+
+```{r}
+#| label: basement_area_type_2 distribution
+#| echo: false
+ames |> 
+    numeric_distribution(basement_area_type_2,
+                         xlabel = "Basement Area Type 2 (ft2)",
+                         title  = "Basement Area Type 2 Distribution")
+```
+
+## Summary Statistics
+
+```{r}
+#| label: basement_area_type_2 summary statistics
+#| echo: false
+ames |>
+    numeric_summary_table(basement_area_type_2)
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: basement_area_type_2 vs sale_price
+#| echo: false
+ames |>
+    scatter_plot(x_numeric = basement_area_type_2,
+                 y_numeric = sale_price,
+                 x_label   = "Basement Area Type 2 (ft2)",
+                 y_label   = "Sale Price ($)",
+                 title     = "Sale Price vs Basement Area Type 2")
+```
+
+:::
+
+## basement_unfinished_area
+
+Numeric Variable.
+
+Unfinished square feet of basement area.
+
+::: {.panel-tabset}
+
+## Distribution
+
+```{r}
+#| label: basement_unfinished_area distribution
+#| echo: false
+ames |> 
+    numeric_distribution(basement_unfinished_area,
+                         xlabel = "Basement Unfinished Area (ft2)",
+                         title  = "Basement Unfinished Area Distribution")
+```
+
+## Summary Statistics
+
+```{r}
+#| label: basement_unfinished_area summary statistics
+#| echo: false
+ames |>
+    numeric_summary_table(basement_unfinished_area)
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: basement_unfinished_area vs sale_price
+#| echo: false
+ames |>
+    scatter_plot(x_numeric = basement_unfinished_area,
+                 y_numeric = sale_price,
+                 x_label   = "Basement Unfinished Area (ft2)",
+                 y_label   = "Sale Price ($)",
+                 title     = "Sale Price vs Basement Unfinished Area")
+```
+
+:::
+
+## basement_total_area
+
+Numeric Variable.
+
+Unfinished square feet of basement area.
+
+::: {.panel-tabset}
+
+## Distribution
+
+```{r}
+#| label: basement_total_area distribution
+#| echo: false
+ames |> 
+    numeric_distribution(basement_total_area,
+                         xlabel = "Basement Total Area (ft2)",
+                         title  = "Basement Total Area Distribution")
+```
+
+## Summary Statistics
+
+```{r}
+#| label: basement_total_area summary statistics
+#| echo: false
+ames |>
+    numeric_summary_table(basement_total_area)
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: basement_total_area vs sale_price
+#| echo: false
+ames |>
+    scatter_plot(x_numeric = basement_total_area,
+                 y_numeric = sale_price,
+                 x_label   = "Basement Total Area (ft2)",
+                 y_label   = "Sale Price ($)",
+                 title     = "Sale Price vs Basement Total Area")
+```
+
+:::
+
+## heating
+
+Nominal Variable.
+
+Type of heating.
+
+```{r}
+#| label: heating reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        heating =
+            recode_factor(
+                
+                factor(heating),
+                
+                "Floor" = "Floor Furnace",
+                "GasA"  = "Gas Forced Warm Air Furnace",
+                "GasW"  = "Gas Hot Water or Steam Heat",
+                "Grav"  = "Gravity Furnace",
+                "OthW"  = "Hot Water or Steam Heat other than Gas",
+                "Wall"  = "Wall Furnace"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: heating frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(heating)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: heating frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(heating,
+                          order         = sale_price,
+                          nominal_label = "Heating",
+                          title         = "Heating Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: heating vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = heating,
+                        nominal_label = "Heating",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Heating vs Sale Price")
+```
+
+:::
+
+## heating_quality
+
+Nominal Variable.
+
+Heating quality and condition.
+
+```{r}
+#| label: heating_quality reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        heating_quality =
+            recode_factor(
+                
+                factor(heating_quality),
+                
+                "Po" = "Poor",
+                "Fa" = "Fair",
+                "TA" = "Average Typical",
+                "Gd" = "Good",
+                "Ex" = "Excellent"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: heating_quality frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(heating_quality)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: heating_quality frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(heating_quality,
+                          order         = sale_price,
+                          nominal_label = "Heating Quality",
+                          title         = "Heating Quality Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: heating_quality vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = heating_quality,
+                        nominal_label = "Heating Quality",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Heating Quality vs Sale Price")
+```
+
+:::
+
+## central_air
+
+Nominal Variable.
+
+Central air conditioning.
+
+```{r}
+#| label: central_air reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        central_air =
+            recode_factor(
+                
+                factor(central_air),
+                
+                "N" = "No",
+                "Y" = "Yes"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: central_air frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(central_air)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: central_air frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(central_air,
+                          order         = sale_price,
+                          nominal_label = "Central Air",
+                          title         = "Central Air Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: central_air vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = central_air,
+                        nominal_label = "Central Air",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Central Air vs Sale Price")
+```
+
+:::
+
+## electrical
+
+### Frequency Table
+
+```{r}
+#| label: electrical frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(electrical)
+```
