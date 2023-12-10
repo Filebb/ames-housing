@@ -1,0 +1,1466 @@
+# Data Cleaning and EDA
+
+```{r}
+#| label: load functions and data
+#| echo: false
+source(file = "functions/stats.R")
+source(file = "functions/plots.R")
+
+ames <- read_rds(file = "data/ames-renamed.RDS")
+```
+
+::: {.callout-note appearance="simple"}
+## Main Findings
+
+TO DO
+:::
+
+## id
+
+Unique observation ID.
+
+## pid
+
+Parcel identification number - can be used with city web site for parcel review.
+
+## ms_sub_class
+
+Nominal Variable.
+
+Identifies the type of dwelling involved in the sale.
+
+```{r}
+#| label: ms_sub_class reconding
+#| code-fold: true
+ames <- ames  |> 
+    
+    mutate(
+        ms_sub_class =
+            recode_factor(
+                
+                factor(ms_sub_class),
+                
+                "020" = "One_Story_1946_and_Newer_All_Styles",
+                "030" = "One_Story_1945_and_Older",
+                "040" = "One_Story_with_Finished_Attic_All_Ages",
+                "045" = "One_and_Half_Story_Unfinished_All_Ages",
+                "050" = "One_and_Half_Story_Finished_All_Ages",
+                "060" = "Two_Story_1946_and_Newer",
+                "070" = "Two_Story_1945_and_Older",
+                "075" = "Two_and_Half_Story_All_Ages",
+                "080" = "Split_or_Multilevel",
+                "085" = "Split_Foyer",
+                "090" = "Duplex_All_Styles_and_Ages",
+                "120" = "One_Story_PUD_1946_and_Newer",
+                "150" = "One_and_Half_Story_PUD_All_Ages",
+                "160" = "Two_Story_PUD_1946_and_Newer",
+                "180" = "PUD_Multilevel_Split_Level_Foyer",
+                "190" = "Two_Family_Conversion_All_Styles_and_Ages"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: ms_sub_class frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(ms_sub_class)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: ms_sub_class frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(ms_sub_class,
+                          nominal_label = "MS Sub Class",
+                          title         = "Ms Sub Class Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: ms_sub_class vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = ms_sub_class,
+                        nominal_label = "MS Sub Class",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "MS Sub Class vs Sale Price")
+```
+
+:::
+
+## ms_zoning
+
+Nominal Variable.
+
+Identifies the general zoning classification of the sale.
+
+```{r}
+#| label: ms_zoning reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        ms_zoning =
+            recode_factor(
+                
+                factor(ms_zoning),
+                
+                "A (agr)" = "Agriculture",
+                "C (all)" = "Commercial",
+                "FV"      = "Floating_Village_Residential",
+                "I (all)" = "Industrial",
+                "RH"      = "Residential_High_Density",
+                "RL"      = "Residential_Low_Density",
+                "RM"      = "Residential_Medium_Density"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: ms_zoning frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(ms_zoning)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: ms_zoning frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(ms_zoning,
+                          nominal_label = "MS Zoning",
+                          title         = "Ms Zoning Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: ms_zoning vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = ms_zoning,
+                        nominal_label = "MS Zoning",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "MS Zoning vs Sale Price")
+```
+
+:::
+
+## lot_frontage
+
+Numeric Variable.
+
+Linear feet of street connected to property.
+
+::: {.panel-tabset}
+
+## Missing Values
+
+```{r}
+#| label: lot_frontage missing values
+ames |> 
+    summarise(NAs = sum(is.na(lot_frontage)))
+```
+
+When values are missing we assume that the value is zero.
+
+```{r}
+#| label: lot_frontage impute
+#| code-fold: true
+ames <- ames |> 
+    mutate(lot_frontage = replace_na(lot_frontage, 0))
+```
+
+## Distribution
+
+```{r}
+#| label: lot_frontage distribution
+#| echo: false
+ames |> 
+    numeric_distribution(lot_frontage,
+                         xlabel = "Lot Frontage (ft)",
+                         title  = "Lot Frontage Distribution")
+```
+
+## Summary Statistics
+
+```{r}
+#| label: lot_frontage summary statistics
+#| echo: false
+ames |>
+    numeric_summary_table(lot_frontage)
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: lot_frontage vs sale_price
+#| echo: false
+ames |>
+    scatter_plot(x_numeric = lot_frontage, y_numeric = sale_price,
+                 "Lot Frontage (ft)", "Sale Price ($)",
+                 "Sale Price vs Lot Frontage")
+```
+
+:::
+
+## lot_area
+
+Numeric Variable.
+
+Lot size in square feet.
+
+::: {.panel-tabset}
+
+## Missing Values
+
+```{r}
+#| label: lot_area missing values
+ames |> 
+    summarise(NAs = sum(is.na(lot_area)))
+```
+
+## Distribution
+
+```{r}
+#| label: lot_area distribution
+#| echo: false
+ames |> 
+    numeric_distribution(lot_area,
+                         xlabel = "Lot Area (ft2)",
+                         title  = "Lot Area Distribution")
+```
+
+## Summary Statistics
+
+```{r}
+#| label: lot_area summary statistics
+#| echo: false
+ames |>
+    numeric_summary_table(lot_area)
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: lot_area vs sale_price
+#| echo: false
+ames |>
+    scatter_plot(x_numeric = lot_area,
+                 y_numeric = sale_price,
+                 "Lot Area (ft2)", "Sale Price ($)",
+                 "Sale Price vs Lot Area")
+```
+
+:::
+
+## street
+
+Nominal Variable.
+
+Type of road access to property.
+
+```{r}
+#| label: street reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        street =
+            recode_factor(
+                
+                factor(street),
+                
+                "Grvl" = "Gravel",
+                "Pave" = "Paved"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: street frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(street)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: street frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(street,
+                          nominal_label = "Street",
+                          title         = "Street Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: street vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = street,
+                        nominal_label = "Street",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Street vs Sale Price")
+```
+
+:::
+
+## alley
+
+Nominal Variable.
+
+Type of alley access to property.
+
+::: {.panel-tabset}
+
+## Missing Values
+
+```{r}
+#| label: alley missing values
+ames |> 
+    summarise(NAs = sum(is.na(alley)))
+```
+
+Missing values are coded as `"No Alley Access"`.
+
+```{r}
+#| label: alley reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        alley = replace_na(alley, "No Alley Access"),
+        
+        alley = recode_factor(
+            
+            factor(alley),
+            
+            "Grvl"            = "Gravel",
+            "Pave"            = "Paved",
+            "No Alley Access" = "No Alley Access"
+        )
+    )
+```
+
+## Frequency Table
+
+```{r}
+#| label: alley frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(alley)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: alley frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(alley,
+                          nominal_label = "Alley",
+                          title         = "Alley Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: alley vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = alley,
+                        nominal_label = "Alley",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Alley vs Sale Price")
+```
+
+:::
+
+## lot_shape
+
+Nominal Variable.
+
+General shape of property.
+
+```{r}
+#| label: lot_shape reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        lot_shape =
+            recode_factor(
+                
+                factor(lot_shape),
+                
+                "IR3" = "Irregular",
+                "IR2" = "Moderately Irregular",
+                "IR1" = "Slightly Irregular",
+                "Reg" = "Regular"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: lot_shape frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(lot_shape)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: lot_shape frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(lot_shape,
+                          nominal_label = "Lot Shape",
+                          title         = "Lot Shape Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: lot_shape vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = lot_shape,
+                        nominal_label = "Lot Shape",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Lot Shape vs Sale Price")
+```
+
+:::
+
+## land_contour
+
+Nominal Variable.
+
+Flatness of the property.
+
+```{r}
+#| label: land_contour reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        land_contour =
+            recode_factor(
+                
+                factor(land_contour),
+                
+                "Lvl" = "Near Flat Level",
+                "Bnk" = "Banked",
+                "HLS" = "Hillside",
+                "Low" = "Depression"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: land_contour frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(land_contour)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: land_contour frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(land_contour,
+                          nominal_label = "Land Contour",
+                          title         = "Land Contour Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: land_contour vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = land_contour,
+                        nominal_label = "Land Contour",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Land Contour vs Sale Price")
+```
+
+:::
+
+## utilities
+
+Nominal Variable.
+
+Type of utilities available.
+
+```{r}
+#| label: utilities reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        utilities =
+            recode_factor(
+                
+                factor(utilities),
+                
+                "NoSeWa" = "Electricity Gas",
+                "NoSewr" = "Electricity Gas Water",
+                "AllPub" = "All Public Utilities"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: utilities frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(utilities)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: utilities frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(utilities,
+                          nominal_label = "Utilities",
+                          title         = "Utilities Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: utilities vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = utilities,
+                        nominal_label = "Utilities",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Utilities vs Sale Price")
+```
+
+:::
+
+## lot_configuration
+
+Nominal Variable.
+
+Lot configuration.
+
+```{r}
+#| label: lot_configuration reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        lot_configuration =
+            recode_factor(
+                
+                factor(lot_configuration),
+                
+                "Inside"  = "Inside Lot",
+                "Corner"  = "Corner Lot",
+                "CulDSac" = "Cul de Sac",
+                "FR2"     = "Frontage on 2 Sides",
+                "FR3"     = "Frontage on 3 Sides"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: lot_configuration frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(lot_configuration)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: lot_configuration frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(lot_configuration,
+                          nominal_label = "Lot Configuration",
+                          title         = "Lot Configuration Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: lot_configuration vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = lot_configuration,
+                        nominal_label = "Lot Configuration",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Lot Configuration vs Sale Price")
+```
+
+:::
+
+## land_slope
+
+Nominal Variable.
+
+Slope of property.
+
+```{r}
+#| label: land_slope reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        land_slope =
+            recode_factor(
+                
+                factor(land_slope),
+                
+                "Gtl" = "Gentle Slope",
+                "Mod" = "Moderate Slope",
+                "Sev" = "Severe Slope"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: land_slope frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(land_slope)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: land_slope frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(land_slope,
+                          nominal_label = "Land Slope",
+                          title         = "Land Slope Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: land_slope vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = land_slope,
+                        nominal_label = "Land Slope",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Land Slope vs Sale Price")
+```
+
+:::
+
+## neighborhood
+
+Nominal Variable.
+
+Physical locations within Ames city limits.
+
+```{r}
+#| label: neighborhood reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        neighborhood =
+            recode_factor(
+                
+                factor(neighborhood),
+                
+                "Blmngtn"     = "Bloomington Heights",
+                "Blueste"     = "Bluestem",
+                "BrDale"      = "Briardale",
+                "BrkSide"     = "Brookside",
+                "ClearCr"     = "Clear Creek",
+                "CollgCr"     = "College Creek",
+                "Crawfor"     = "Crawford",
+                "Edwards"     = "Edwards",
+                "Gilbert"     = "Gilbert",
+                "Greens"      = "Greens",
+                "GrnHill"     = "Green Hills",
+                "IDOTRR"      = "Iowa DOT and Rail Road",
+                "Landmrk"     = "Landmark",
+                "MeadowV"     = "Meadow Village",
+                "Mitchel"     = "Mitchell",
+                "NAmes"       = "North Ames",
+                "NoRidge"     = "Northridge",
+                "NPkVill"     = "Northpark Villa",
+                "NridgHt"     = "Northridge Heights",
+                "NWAmes"      = "Northwest Ames",
+                "OldTown"     = "Old Town",
+                "SWISU"       = "South and West of Iowa State University",
+                "Sawyer"      = "Sawyer",
+                "SawyerW"     = "Sawyer West",
+                "Somerst"     = "Somerset",
+                "StoneBr"     = "Stone Brook",
+                "Timber"      = "Timberland",
+                "Veenker"     = "Veenker",
+                "Hayden Lake" = "Hayden Lake"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: neighborhood frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(neighborhood)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: neighborhood frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(neighborhood,
+                          nominal_label = "Neighborhood",
+                          title         = "Neighborhood Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: neighborhood vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = neighborhood,
+                        nominal_label = "Neighborhood",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Neighborhood vs Sale Price")
+```
+
+:::
+
+## condition_1
+
+Nominal Variable.
+
+Proximity to various conditions.
+
+```{r}
+#| label: condition_1 reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        condition_1 =
+            recode_factor(
+                
+                factor(condition_1),
+                
+                "Artery" = "Adjacent Arterial Street",
+                "Feedr"  = "Adjacent Feeder Street",
+                "Norm"   = "Normal",
+                "RRNn"   = "Within 200 North South Railroad",
+                "RRAn"   = "Adjacent North South Railroad",
+                "PosN"   = "Near Positive off Site Feature",
+                "PosA"   = "Adjacent Postive off Site Feature",
+                "RRNe"   = "Within 200 East West Railroad",
+                "RRAe"   = "Adjacent East West Railroad"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: condition_1 frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(condition_1)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: condition_1 frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(condition_1,
+                          nominal_label = "Condition 1",
+                          title         = "Condition 1 Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: condition_1 vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = condition_1,
+                        nominal_label = "Condition 1",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Condition 1 vs Sale Price")
+```
+
+:::
+
+## condition_2
+
+Nominal Variable.
+
+Proximity to various conditions (if more than one is present).
+
+```{r}
+#| label: condition_2 reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        condition_2 =
+            recode_factor(
+                
+                factor(condition_2),
+                
+                "Artery" = "Adjacent Arterial Street",
+                "Feedr"  = "Adjacent Feeder Street",
+                "Norm"   = "Normal",
+                "RRNn"   = "Within 200 North South Railroad",
+                "RRAn"   = "Adjacent North South Railroad",
+                "PosN"   = "Near Positive off Site Feature",
+                "PosA"   = "Adjacent Postive off Site Feature",
+                "RRNe"   = "Within 200 East West Railroad",
+                "RRAe"   = "Adjacent East West Railroad"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: condition_2 frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(condition_2)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: condition_2 frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(condition_2,
+                          nominal_label = "Condition 2",
+                          title         = "Condition 2 Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: condition_2 vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = condition_2,
+                        nominal_label = "Condition 2",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Condition 2 vs Sale Price")
+```
+
+:::
+
+## building_type
+
+Nominal Variable.
+
+Type of dwelling.
+
+```{r}
+#| label: building_type reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        building_type =
+            recode_factor(
+                
+                factor(building_type),
+                
+                "1Fam"   = "One Family Detached",
+                "2fmCon" = "Two Family Conversion",
+                "Duplx"  = "Duplex",
+                "TwnhsE" = "Townhouse End Unit",
+                "Twnhs"  = "Townhouse Inside Unit"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: building_type frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(building_type)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: building_type frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(building_type,
+                          nominal_label = "Building Type",
+                          title         = "Building Type Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: building_type vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = building_type,
+                        nominal_label = "Building Type",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Building Type vs Sale Price")
+```
+
+:::
+
+## house_style
+
+Nominal Variable.
+
+Style of dwelling.
+
+```{r}
+#| label: house_style reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        house_style =
+            recode_factor(
+                
+                factor(house_style),
+                
+                "1Story" = "One Story",
+                "1.5Fin" = "One and Half Story 2nd Level Finished",
+                "1.5Unf" = "One and Half Story 2nd Level Unfinished",
+                "2Story" = "Two Story",
+                "2.5Fin" = "Two and Half Story 2nd Level Finished",
+                "2.5Unf" = "Two and Half Story 2nd Level Unfinished",
+                "SFoyer" = "Split Foyer",
+                "SLvl"   = "Split Level"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: house_style frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(house_style)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: house_style frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(house_style,
+                          nominal_label = "House Style",
+                          title         = "House Style Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: house_style vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = house_style,
+                        nominal_label = "House Style",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "House Style vs Sale Price")
+```
+
+:::
+
+## overall_quality
+
+Nominal Variable.
+
+Rates the overall material and finish of the house.
+
+```{r}
+#| label: overall_quality reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(overall_quality = factor(overall_quality))
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: overall_quality frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(overall_quality)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: overall_quality frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(overall_quality,
+                          nominal_label = "Overall Quality",
+                          title         = "Overall Quality Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: overall_quality vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = overall_quality,
+                        nominal_label = "Overall Quality",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Overall Quality vs Sale Price")
+```
+
+:::
+
+## overall_condition
+
+Nominal Variable.
+
+Rates the overall material and finish of the house.
+
+```{r}
+#| label: overall_condition reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(overall_condition = factor(overall_condition))
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: overall_condition frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(overall_condition)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: overall_condition frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(overall_condition,
+                          nominal_label = "Overall Condition",
+                          title         = "Overall Condition Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: overall_condition vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = overall_quality,
+                        nominal_label = "Overall Condition",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Overall Condition vs Sale Price")
+```
+
+:::
+
+## year_built
+
+Original construction date.
+
+```{r}
+#| label: year_built frequency table
+#| echo: false
+# ames |> 
+#     nominal_frequency_table(year_built)
+```
+
+## year_remod_add
+
+Remodel date (same as construction date if no remodeling or additions).
+
+```{r}
+#| label: year_remod_add frequency table
+#| echo: false
+# ames |> 
+#     nominal_frequency_table(year_remod_add)
+```
+
+## roof_style
+
+Nominal Variable.
+
+Type of roof.
+
+```{r}
+#| label: roof_style reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        roof_style =
+            recode_factor(
+                
+                factor(roof_style),
+                
+                "Flat"    = "Flat",
+                "Gable"   = "Gable",
+                "Gambrel" = "Gabrel Barn",
+                "Hip"     = "Hip",
+                "Mansard" = "Mansard",
+                "Shed"    = "Shed"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: roof_style frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(roof_style)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: roof_style frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(roof_style,
+                          nominal_label = "Roof Style",
+                          title         = "Roof Style Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: roof_style vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = roof_style,
+                        nominal_label = "Roof Style",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Roof Style vs Sale Price")
+```
+
+:::
+
+## roof_material
+
+Nominal Variable.
+
+Roof material.
+
+```{r}
+#| label: roof_material reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        roof_material =
+            recode_factor(
+                
+                factor(roof_material),
+                
+                "ClyTile" = "Clay or Tile",
+                "CompShg" = "Composite Shingle",
+                "Membran" = "Membrane",
+                "Metal"   = "Metal",
+                "Roll"    = "Roll",
+                "Tar&Grv" = "Gravel and Tar",
+                "WdShake" = "Wood Shakes",
+                "WdShngl" = "Wood Shingles"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: roof_material frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(roof_material)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: roof_material frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(roof_material,
+                          nominal_label = "Roof Material",
+                          title         = "Roof Material Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: roof_material vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = roof_material,
+                        nominal_label = "Roof Material",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Roof Style vs Sale Price")
+```
+
+:::
+
+## exterior_1st
+
+Nominal Variable.
+
+Exterior covering on house.
+
+```{r}
+#| label: exterior_1st reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        exterior_1st =
+            recode_factor(
+                
+                factor(exterior_1st),
+                
+                "AsbShng" = "Asbestos Shingles",
+                "AsphShn" = "Asphalt Shingles",
+                "BrkComm" = "Brick Common",
+                "BrkFace" = "Brick Face",
+                "CBlock"  = "Cinder Block",
+                "CemntBd" = "Cement Board",
+                "HdBoard" = "Hard Board",
+                "ImStucc" = "Imitation Stucco",
+                "MetalSd" = "Metal Siding",
+                "Other"   = "Other",
+                "Plywood" = "Plywood",
+                "PreCast" = "PreCast",
+                "Stone"   = "Stone",
+                "Stucco"  = "Stucco",
+                "VinylSd" = "Vinyl Siding",
+                "Wd Sdng" = "Wood Siding",
+                "WdShing" = "Wood Shingles"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: exterior_1st frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(exterior_1st)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: exterior_1st frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(exterior_1st,
+                          nominal_label = "Exterior 1st",
+                          title         = "Exterior 1st Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: exterior_1st vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = exterior_1st,
+                        nominal_label = "Exterior 1st",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Exterior 1st vs Sale Price")
+```
+
+:::
+
+## exterior_2nd
+
+Nominal Variable.
+
+Exterior covering on house (if more than one material).
+
+```{r}
+#| label: exterior_2nd reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        exterior_2nd =
+            recode_factor(
+                
+                factor(exterior_2nd),
+                
+                "AsbShng" = "Asbestos Shingles",
+                "AsphShn" = "Asphalt Shingles",
+                "Brk Cmn" = "Brick Common",
+                "BrkFace" = "Brick Face",
+                "CBlock"  = "Cinder Block",
+                "CmentBd" = "Cement Board",
+                "HdBoard" = "Hard Board",
+                "ImStucc" = "Imitation Stucco",
+                "MetalSd" = "Metal Siding",
+                "Other"   = "Other",
+                "Plywood" = "Plywood",
+                "PreCast" = "PreCast",
+                "Stone"   = "Stone",
+                "Stucco"  = "Stucco",
+                "VinylSd" = "Vinyl Siding",
+                "Wd Sdng" = "Wood Siding",
+                "Wd Shng" = "Wood Shingles"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+## Frequency Table
+
+```{r}
+#| label: exterior_2nd frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(exterior_2nd)
+```
+
+## Frequency Plot
+
+```{r}
+#| label: exterior_2nd frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(exterior_2nd,
+                          nominal_label = "Exterior 2nd",
+                          title         = "Exterior 2nd Distribution")
+```
+
+## Relationship with Target Variable
+
+```{r}
+#| label: exterior_2nd vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = exterior_2nd,
+                        nominal_label = "Exterior 2nd",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Exterior 2nd vs Sale Price")
+```
+
+:::

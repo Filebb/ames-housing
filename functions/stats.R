@@ -42,7 +42,7 @@ numeric_summary <- function(x) {
             value     = sum(is.na(x)))
 }
 
-# NUMERICAL SUMMARIES TABLE (output: tibble)
+# NUMERICAL SUMMARIES TABLE (output: gt table)
 numeric_summary_table <- function(data, numeric) {
   data |>
     reframe(numeric_summary( {{ numeric }} )) |> 
@@ -52,6 +52,29 @@ numeric_summary_table <- function(data, numeric) {
     fmt_percent(columns = 2, rows = 10, decimals = 2) |> 
     cols_label(statistic = "Statistic",
                value     = "Value") |> 
+    tab_style(style     = cell_text(weight = "bold"),
+              locations = cells_column_labels())
+}
+
+# FREQUENCY TABLE FOR CATEGORICAL VARIABLE (output: tibble)
+nominal_frequency <- function(data, nominal) {
+  
+  data |>
+    count({{ nominal }}, name = "freq") |>
+    mutate(rel_freq = freq / sum(freq))
+  
+}
+
+# NUMERICAL SUMMARIES TABLE (output: gt table)
+nominal_frequency_table <- function(data, nominal) {
+  data |>
+    count({{ nominal }}, name = "freq") |>
+    mutate(rel_freq = freq / sum(freq)) |>  
+    gt() |> 
+    fmt_percent(columns = 3, decimals = 2) |> 
+    cols_align(columns = 1, align = "left") |> 
+    cols_label(freq     = "Frequency",
+               rel_freq = "(%)") |> 
     tab_style(style     = cell_text(weight = "bold"),
               locations = cells_column_labels())
 }

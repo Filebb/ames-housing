@@ -23,9 +23,9 @@ ames <- read_rds(file = "data/ames-renamed.RDS")
 ```{r}
 #| echo: false
 ames |> 
-  numeric_distribution(sale_price,
-                       xlabel = "Sale Price ($)",
-                       title  = "Sale Price Distribution")
+    numeric_distribution(sale_price,
+                         xlabel = "Sale Price ($)",
+                         title  = "Sale Price Distribution")
 ```
 
 ## Numerical Summaries
@@ -33,7 +33,7 @@ ames |>
 ```{r}
 #| echo: false
 ames |>
-  numeric_summary_table(sale_price)
+    numeric_summary_table(sale_price)
 ```
 
 ## Box-Cox transformation
@@ -55,9 +55,9 @@ the variable is not normally distributed:
 
 ```{r}
 ames |> 
-  mutate(sale_price = log10(sale_price)) |> 
-  pull() |> 
-  shapiro.test()
+    mutate(sale_price = log10(sale_price)) |> 
+    pull() |> 
+    shapiro.test()
 ```
 
 As the p-value is lower than `1%` level of significance we have evidence to
@@ -68,9 +68,9 @@ reject the null hypothesis of normality.
 ```{r}
 #| echo: false
 ames |> 
-  numeric_distribution(log10(sale_price),
-                       xlabel = "log10(Sale Price ($))",
-                       title  = "Sale Price Distribution")
+    numeric_distribution(log10(sale_price),
+                         xlabel = "log10(Sale Price ($))",
+                         title  = "Sale Price Distribution")
 ```
 
 ## Numerical Summaries after log10 Transformation
@@ -78,5 +78,5 @@ ames |>
 ```{r}
 #| echo: false
 ames |>
-  numeric_summary_table(log10(sale_price))
+    numeric_summary_table(log10(sale_price))
 ```

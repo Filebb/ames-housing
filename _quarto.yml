@@ -14,13 +14,14 @@ website:
     contents: 
       - data-dictionary.qmd
       - target-variable.qmd
+      - cleaning-eda.qmd
 
 format:
   html:
     theme: yeti
     highlight-style: atom-one
     css: styles.css
-    toc: false
+    toc: true
     header-includes: |
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
