@@ -35,6 +35,8 @@ numeric_distribution <- function(data, numeric, xlabel, title) {
     # https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule
     bin_width <- 2 * v_iqr / v_length^(1/3)
     
+    bin_width <- ifelse(bin_width > 0, bin_width, 86)
+    
     data |> 
         ggplot(mapping = aes(x = {{ numeric }} )) +
         
@@ -44,6 +46,29 @@ numeric_distribution <- function(data, numeric, xlabel, title) {
                        fill     = "orange2") +
         
         scale_x_continuous(label = label_number(scale_cut = cut_short_scale())) +
+        
+        labs(title = title,
+             x     = xlabel,
+             y     = "Count") +
+        
+        geom_hline(yintercept = 0,
+                   col        = "gray80",
+                   linewidth  = 0.5,
+                   linetype   = "dotted")
+}
+
+# DISTRIBUTION OF A DISCRETE VARIABLE
+discrete_distribution <- function(data, discrete, xlabel, title) {
+    
+    data |> 
+        ggplot(mapping = aes(x = {{ discrete }} )) +
+        
+        geom_histogram(binwidth = 0.5,
+                       size     = 0.5,
+                       col      = "white",
+                       fill     = "orange2") +
+        
+        # scale_x_continuous(label = label_number(scale_cut = cut_short_scale())) +
         
         labs(title = title,
              x     = xlabel,

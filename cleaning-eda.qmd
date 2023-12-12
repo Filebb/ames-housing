@@ -62,7 +62,7 @@ ames <- ames  |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: ms_sub_class frequency table
@@ -71,7 +71,7 @@ ames |>
     nominal_frequency_table(ms_sub_class)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: ms_sub_class frequency plot
@@ -83,7 +83,7 @@ ames |>
                           title         = "MS Sub Class Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: ms_sub_class vs sale_price
@@ -128,7 +128,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: ms_zoning frequency table
@@ -137,7 +137,7 @@ ames |>
     nominal_frequency_table(ms_zoning)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: ms_zoning frequency plot
@@ -149,7 +149,7 @@ ames |>
                           title         = "Ms Zoning Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: ms_zoning vs sale_price
@@ -172,7 +172,7 @@ Linear feet of street connected to property.
 
 ::: {.panel-tabset}
 
-## Missing Values
+### Missing Values
 
 ```{r}
 #| label: lot_frontage missing values
@@ -189,7 +189,7 @@ ames <- ames |>
     mutate(lot_frontage = replace_na(lot_frontage, 0))
 ```
 
-## Distribution
+### Distribution
 
 ```{r}
 #| label: lot_frontage distribution
@@ -200,7 +200,7 @@ ames |>
                          title  = "Lot Frontage Distribution")
 ```
 
-## Summary Statistics
+### Summary Statistics
 
 ```{r}
 #| label: lot_frontage summary statistics
@@ -209,7 +209,7 @@ ames |>
     numeric_summary_table(lot_frontage)
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: lot_frontage vs sale_price
@@ -232,7 +232,7 @@ Lot size in square feet.
 
 ::: {.panel-tabset}
 
-## Missing Values
+### Missing Values
 
 ```{r}
 #| label: lot_area missing values
@@ -240,7 +240,7 @@ ames |>
     summarise(NAs = sum(is.na(lot_area)))
 ```
 
-## Distribution
+### Distribution
 
 ```{r}
 #| label: lot_area distribution
@@ -251,7 +251,7 @@ ames |>
                          title  = "Lot Area Distribution")
 ```
 
-## Summary Statistics
+### Summary Statistics
 
 ```{r}
 #| label: lot_area summary statistics
@@ -260,7 +260,7 @@ ames |>
     numeric_summary_table(lot_area)
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: lot_area vs sale_price
@@ -300,7 +300,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: street frequency table
@@ -309,7 +309,7 @@ ames |>
     nominal_frequency_table(street)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: street frequency plot
@@ -321,7 +321,7 @@ ames |>
                           title         = "Street Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: street vs sale_price
@@ -344,7 +344,7 @@ Type of alley access to property.
 
 ::: {.panel-tabset}
 
-## Missing Values
+### Missing Values
 
 ```{r}
 #| label: alley missing values
@@ -373,7 +373,7 @@ ames <- ames |>
     )
 ```
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: alley frequency table
@@ -382,7 +382,7 @@ ames |>
     nominal_frequency_table(alley)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: alley frequency plot
@@ -394,7 +394,7 @@ ames |>
                           title         = "Alley Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: alley vs sale_price
@@ -436,7 +436,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: lot_shape frequency table
@@ -445,7 +445,7 @@ ames |>
     nominal_frequency_table(lot_shape)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: lot_shape frequency plot
@@ -457,7 +457,7 @@ ames |>
                           title         = "Lot Shape Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: lot_shape vs sale_price
@@ -499,7 +499,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: land_contour frequency table
@@ -508,7 +508,7 @@ ames |>
     nominal_frequency_table(land_contour)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: land_contour frequency plot
@@ -520,7 +520,7 @@ ames |>
                           title         = "Land Contour Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: land_contour vs sale_price
@@ -561,7 +561,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: utilities frequency table
@@ -570,7 +570,7 @@ ames |>
     nominal_frequency_table(utilities)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: utilities frequency plot
@@ -582,7 +582,7 @@ ames |>
                           title         = "Utilities Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: utilities vs sale_price
@@ -625,7 +625,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: lot_configuration frequency table
@@ -634,7 +634,7 @@ ames |>
     nominal_frequency_table(lot_configuration)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: lot_configuration frequency plot
@@ -646,7 +646,7 @@ ames |>
                           title         = "Lot Configuration Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: lot_configuration vs sale_price
@@ -687,7 +687,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: land_slope frequency table
@@ -696,7 +696,7 @@ ames |>
     nominal_frequency_table(land_slope)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: land_slope frequency plot
@@ -708,7 +708,7 @@ ames |>
                           title         = "Land Slope Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: land_slope vs sale_price
@@ -775,7 +775,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: neighborhood frequency table
@@ -784,7 +784,7 @@ ames |>
     nominal_frequency_table(neighborhood)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: neighborhood frequency plot
@@ -796,7 +796,7 @@ ames |>
                           title         = "Neighborhood Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: neighborhood vs sale_price
@@ -843,7 +843,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: condition_1 frequency table
@@ -852,7 +852,7 @@ ames |>
     nominal_frequency_table(condition_1)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: condition_1 frequency plot
@@ -864,7 +864,7 @@ ames |>
                           title         = "Condition 1 Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: condition_1 vs sale_price
@@ -911,7 +911,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: condition_2 frequency table
@@ -920,7 +920,7 @@ ames |>
     nominal_frequency_table(condition_2)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: condition_2 frequency plot
@@ -932,7 +932,7 @@ ames |>
                           title         = "Condition 2 Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: condition_2 vs sale_price
@@ -975,7 +975,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: building_type frequency table
@@ -984,7 +984,7 @@ ames |>
     nominal_frequency_table(building_type)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: building_type frequency plot
@@ -996,7 +996,7 @@ ames |>
                           title         = "Building Type Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: building_type vs sale_price
@@ -1042,7 +1042,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: house_style frequency table
@@ -1051,7 +1051,7 @@ ames |>
     nominal_frequency_table(house_style)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: house_style frequency plot
@@ -1063,7 +1063,7 @@ ames |>
                           title         = "House Style Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: house_style vs sale_price
@@ -1094,7 +1094,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: overall_quality frequency table
@@ -1103,7 +1103,7 @@ ames |>
     nominal_frequency_table(overall_quality)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: overall_quality frequency plot
@@ -1115,7 +1115,7 @@ ames |>
                           title         = "Overall Quality Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: overall_quality vs sale_price
@@ -1146,7 +1146,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: overall_condition frequency table
@@ -1155,7 +1155,7 @@ ames |>
     nominal_frequency_table(overall_condition)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: overall_condition frequency plot
@@ -1167,7 +1167,7 @@ ames |>
                           title         = "Overall Condition Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: overall_condition vs sale_price
@@ -1233,7 +1233,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: roof_style frequency table
@@ -1242,7 +1242,7 @@ ames |>
     nominal_frequency_table(roof_style)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: roof_style frequency plot
@@ -1254,7 +1254,7 @@ ames |>
                           title         = "Roof Style Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: roof_style vs sale_price
@@ -1300,7 +1300,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: roof_material frequency table
@@ -1309,7 +1309,7 @@ ames |>
     nominal_frequency_table(roof_material)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: roof_material frequency plot
@@ -1321,7 +1321,7 @@ ames |>
                           title         = "Roof Material Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: roof_material vs sale_price
@@ -1376,7 +1376,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: exterior_1st frequency table
@@ -1385,7 +1385,7 @@ ames |>
     nominal_frequency_table(exterior_1st)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: exterior_1st frequency plot
@@ -1397,7 +1397,7 @@ ames |>
                           title         = "Exterior 1st Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: exterior_1st vs sale_price
@@ -1452,7 +1452,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: exterior_2nd frequency table
@@ -1461,7 +1461,7 @@ ames |>
     nominal_frequency_table(exterior_2nd)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: exterior_2nd frequency plot
@@ -1473,7 +1473,7 @@ ames |>
                           title         = "Exterior 2nd Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: exterior_2nd vs sale_price
@@ -1496,7 +1496,7 @@ Masonry veneer type.
 
 ::: {.panel-tabset}
 
-## Missing Values
+### Missing Values
 
 ```{r}
 #| label: masonry_veneer_type missing values
@@ -1527,7 +1527,7 @@ ames <- ames |>
     )
 ```
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: masonry_veneer_type frequency table
@@ -1536,7 +1536,7 @@ ames |>
     nominal_frequency_table(masonry_veneer_type)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: masonry_veneer_type frequency plot
@@ -1548,7 +1548,7 @@ ames |>
                           title         = "Masonry Veneer Type Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: masonry_veneer_type vs sale_price
@@ -1571,7 +1571,7 @@ Linear feet of street connected to property.
 
 ::: {.panel-tabset}
 
-## Missing Values
+### Missing Values
 
 ```{r}
 #| label: masonry_veneer_area missing values
@@ -1588,7 +1588,7 @@ ames <- ames |>
     mutate(masonry_veneer_area = replace_na(masonry_veneer_area, 0))
 ```
 
-## Distribution
+### Distribution
 
 ```{r}
 #| label: masonry_veneer_area distribution
@@ -1599,7 +1599,7 @@ ames |>
                          title  = "Masonry Veneer Area Distribution")
 ```
 
-## Summary Statistics
+### Summary Statistics
 
 ```{r}
 #| label: masonry_veneer_area summary statistics
@@ -1608,7 +1608,7 @@ ames |>
     numeric_summary_table(masonry_veneer_area)
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: masonry_veneer_area vs sale_price
@@ -1651,7 +1651,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: exterior_quality frequency table
@@ -1660,7 +1660,7 @@ ames |>
     nominal_frequency_table(exterior_quality)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: exterior_quality frequency plot
@@ -1672,7 +1672,7 @@ ames |>
                           title         = "Exterior Quality Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: exterior_quality vs sale_price
@@ -1715,7 +1715,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: exterior_condition frequency table
@@ -1724,7 +1724,7 @@ ames |>
     nominal_frequency_table(exterior_condition)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: exterior_condition frequency plot
@@ -1736,7 +1736,7 @@ ames |>
                           title         = "Exterior Condition Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: exterior_condition vs sale_price
@@ -1780,7 +1780,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: foundation frequency table
@@ -1789,7 +1789,7 @@ ames |>
     nominal_frequency_table(foundation)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: foundation frequency plot
@@ -1801,7 +1801,7 @@ ames |>
                           title         = "Foundation Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: foundation vs sale_price
@@ -1961,7 +1961,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: basement_quality frequency table
@@ -1970,7 +1970,7 @@ ames |>
     nominal_frequency_table(basement_quality)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: basement_quality frequency plot
@@ -1982,7 +1982,7 @@ ames |>
                           title         = "Basement Quality Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: basement_quality vs sale_price
@@ -2026,7 +2026,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: basement_condition frequency table
@@ -2035,7 +2035,7 @@ ames |>
     nominal_frequency_table(basement_condition)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: basement_condition frequency plot
@@ -2047,7 +2047,7 @@ ames |>
                           title         = "Basement Condition Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: basement_condition vs sale_price
@@ -2090,7 +2090,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: basement_exposure frequency table
@@ -2099,7 +2099,7 @@ ames |>
     nominal_frequency_table(basement_exposure)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: basement_exposure frequency plot
@@ -2111,7 +2111,7 @@ ames |>
                           title         = "Basement Exposure Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: basement_exposure vs sale_price
@@ -2156,7 +2156,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: basement_finished_type_1 frequency table
@@ -2165,7 +2165,7 @@ ames |>
     nominal_frequency_table(basement_finished_type_1)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: basement_finished_type_1 frequency plot
@@ -2177,7 +2177,7 @@ ames |>
                           title         = "Basement Finished Type 1 Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: basement_finished_type_1 vs sale_price
@@ -2200,7 +2200,7 @@ Type 1 finished square feet.
 
 ::: {.panel-tabset}
 
-## Distribution
+### Distribution
 
 ```{r}
 #| label: basement_area_type_1 distribution
@@ -2211,7 +2211,7 @@ ames |>
                          title  = "Basement Area Type 1 Distribution")
 ```
 
-## Summary Statistics
+### Summary Statistics
 
 ```{r}
 #| label: basement_area_type_1 summary statistics
@@ -2220,7 +2220,7 @@ ames |>
     numeric_summary_table(basement_area_type_1)
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: basement_area_type_1 vs sale_price
@@ -2265,7 +2265,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: basement_finished_type_2 frequency table
@@ -2274,7 +2274,7 @@ ames |>
     nominal_frequency_table(basement_finished_type_2)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: basement_finished_type_2 frequency plot
@@ -2286,7 +2286,7 @@ ames |>
                           title         = "Basement Finished Type 2 Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: basement_finished_type_2 vs sale_price
@@ -2309,7 +2309,7 @@ Type 2 finished square feet.
 
 ::: {.panel-tabset}
 
-## Distribution
+### Distribution
 
 ```{r}
 #| label: basement_area_type_2 distribution
@@ -2320,7 +2320,7 @@ ames |>
                          title  = "Basement Area Type 2 Distribution")
 ```
 
-## Summary Statistics
+### Summary Statistics
 
 ```{r}
 #| label: basement_area_type_2 summary statistics
@@ -2329,7 +2329,7 @@ ames |>
     numeric_summary_table(basement_area_type_2)
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: basement_area_type_2 vs sale_price
@@ -2352,7 +2352,7 @@ Unfinished square feet of basement area.
 
 ::: {.panel-tabset}
 
-## Distribution
+### Distribution
 
 ```{r}
 #| label: basement_unfinished_area distribution
@@ -2363,7 +2363,7 @@ ames |>
                          title  = "Basement Unfinished Area Distribution")
 ```
 
-## Summary Statistics
+### Summary Statistics
 
 ```{r}
 #| label: basement_unfinished_area summary statistics
@@ -2372,7 +2372,7 @@ ames |>
     numeric_summary_table(basement_unfinished_area)
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: basement_unfinished_area vs sale_price
@@ -2395,7 +2395,7 @@ Unfinished square feet of basement area.
 
 ::: {.panel-tabset}
 
-## Distribution
+### Distribution
 
 ```{r}
 #| label: basement_total_area distribution
@@ -2406,7 +2406,7 @@ ames |>
                          title  = "Basement Total Area Distribution")
 ```
 
-## Summary Statistics
+### Summary Statistics
 
 ```{r}
 #| label: basement_total_area summary statistics
@@ -2415,7 +2415,7 @@ ames |>
     numeric_summary_table(basement_total_area)
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: basement_total_area vs sale_price
@@ -2459,7 +2459,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: heating frequency table
@@ -2468,7 +2468,7 @@ ames |>
     nominal_frequency_table(heating)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: heating frequency plot
@@ -2480,7 +2480,7 @@ ames |>
                           title         = "Heating Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: heating vs sale_price
@@ -2523,7 +2523,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: heating_quality frequency table
@@ -2532,7 +2532,7 @@ ames |>
     nominal_frequency_table(heating_quality)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: heating_quality frequency plot
@@ -2544,7 +2544,7 @@ ames |>
                           title         = "Heating Quality Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: heating_quality vs sale_price
@@ -2584,7 +2584,7 @@ ames <- ames |>
 
 ::: {.panel-tabset}
 
-## Frequency Table
+### Frequency Table
 
 ```{r}
 #| label: central_air frequency table
@@ -2593,7 +2593,7 @@ ames |>
     nominal_frequency_table(central_air)
 ```
 
-## Frequency Plot
+### Frequency Plot
 
 ```{r}
 #| label: central_air frequency plot
@@ -2605,7 +2605,7 @@ ames |>
                           title         = "Central Air Distribution")
 ```
 
-## Relationship with Target Variable
+### Relationship with Target Variable
 
 ```{r}
 #| label: central_air vs sale_price
@@ -2622,6 +2622,49 @@ ames |>
 
 ## electrical
 
+Nominal Variable.
+
+Electrical system.
+
+::: {.panel-tabset}
+
+### Missing Values
+
+```{r}
+#| label: electrical missing values
+ames |> 
+    summarise(NAs = sum(is.na(electrical)))
+```
+
+There is one missing values that I impute using the mode.
+
+```{r}
+#| label: electrical impute
+#| code-fold: true
+ames <- ames |> 
+    mutate(electrical = replace_na(electrical, "SBrkr"))
+```
+
+```{r}
+#| label: electrical reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        electrical =
+            recode_factor(
+                
+                factor(electrical),
+                
+                "Mix"   = "Mixed",
+                "FuseP" = "Fuse Box Poor",
+                "FuseF" = "Fuse Box Fair",
+                "FuseA" = "Fuse Box Average",
+                "SBrkr" = "Standard Circuit Breakers and Romex"
+            )
+    )
+```
+
 ### Frequency Table
 
 ```{r}
@@ -2630,3 +2673,761 @@ ames |>
 ames |> 
     nominal_frequency_table(electrical)
 ```
+
+### Frequency Plot
+
+```{r}
+#| label: electrical frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(electrical,
+                          order         = sale_price,
+                          nominal_label = "Electrical",
+                          title         = "Electrical Distribution")
+```
+
+### Relationship with Target Variable
+
+```{r}
+#| label: electrical vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = electrical,
+                        nominal_label = "Electrical",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Electrical vs Sale Price")
+```
+:::
+
+## first_floor_area
+
+Numeric Variable.
+
+First Floor square feet.
+
+::: {.panel-tabset}
+
+### Distribution
+
+```{r}
+#| label: first_floor_area distribution
+#| echo: false
+ames |> 
+    numeric_distribution(first_floor_area,
+                         xlabel = "First Floor Area (ft2)",
+                         title  = "First Floor Area Distribution")
+```
+
+### Summary Statistics
+
+```{r}
+#| label: first_floor_area summary statistics
+#| echo: false
+ames |>
+    numeric_summary_table(first_floor_area)
+```
+
+### Relationship with Target Variable
+
+```{r}
+#| label: first_floor_area vs sale_price
+#| echo: false
+ames |>
+    scatter_plot(x_numeric = first_floor_area,
+                 y_numeric = sale_price,
+                 x_label   = "First Floor Area (ft2)",
+                 y_label   = "Sale Price ($)",
+                 title     = "Sale Price vs First Floor Area")
+```
+
+:::
+
+## second_floor_area
+
+Numeric Variable.
+
+Second floor square feet.
+
+::: {.panel-tabset}
+
+### Distribution
+
+```{r}
+#| label: second_floor_area distribution
+#| echo: false
+ames |> 
+    numeric_distribution(second_floor_area,
+                         xlabel = "Second Floor Area (ft2)",
+                         title  = "Second Floor Area Distribution")
+```
+
+### Summary Statistics
+
+```{r}
+#| label: second_floor_area summary statistics
+#| echo: false
+ames |>
+    numeric_summary_table(second_floor_area)
+```
+
+### Relationship with Target Variable
+
+```{r}
+#| label: second_floor_area vs sale_price
+#| echo: false
+ames |>
+    scatter_plot(x_numeric = second_floor_area,
+                 y_numeric = sale_price,
+                 x_label   = "Second Floor Area (ft2)",
+                 y_label   = "Sale Price ($)",
+                 title     = "Sale Price vs Second Floor Area")
+```
+
+:::
+
+## low_quality_finished_area
+
+Numeric Variable.
+
+Low quality finished square feet (all floors).
+
+::: {.panel-tabset}
+
+### Distribution
+
+```{r}
+#| label: low_quality_finished_area distribution
+#| echo: false
+ames |> 
+    numeric_distribution(low_quality_finished_area,
+                         xlabel = "Low Quality Finished Area (ft2)",
+                         title  = "Low Quality Finished Area Distribution")
+```
+
+### Summary Statistics
+
+```{r}
+#| label: low_quality_finished_area summary statistics
+#| echo: false
+ames |>
+    numeric_summary_table(low_quality_finished_area)
+```
+
+### Relationship with Target Variable
+
+```{r}
+#| label: low_quality_finished_area vs sale_price
+#| echo: false
+ames |>
+    scatter_plot(x_numeric = low_quality_finished_area,
+                 y_numeric = sale_price,
+                 x_label   = "Low Quality Finished Area (ft2)",
+                 y_label   = "Sale Price ($)",
+                 title     = "Sale Price vs Low Quality Finished Area")
+```
+
+:::
+
+## ground_living_area
+
+Numeric Variable.
+
+Above grade (ground) living area square feet.
+
+::: {.panel-tabset}
+
+### Distribution
+
+```{r}
+#| label: ground_living_area distribution
+#| echo: false
+ames |> 
+    numeric_distribution(ground_living_area,
+                         xlabel = "Ground Living Area (ft2)",
+                         title  = "Ground Living Area Distribution")
+```
+
+### Summary Statistics
+
+```{r}
+#| label: ground_living_area summary statistics
+#| echo: false
+ames |>
+    numeric_summary_table(ground_living_area)
+```
+
+### Relationship with Target Variable
+
+```{r}
+#| label: ground_living_area vs sale_price
+#| echo: false
+ames |>
+    scatter_plot(x_numeric = ground_living_area,
+                 y_numeric = sale_price,
+                 x_label   = "Ground Living Area (ft2)",
+                 y_label   = "Sale Price ($)",
+                 title     = "Sale Price vs Ground Living Area")
+```
+
+:::
+
+## basement_full_bathrooms
+
+Numeric Variable.
+
+Basement full bathrooms.
+
+::: {.panel-tabset}
+
+### Distribution
+
+```{r}
+#| label: basement_full_bathrooms distribution
+#| echo: false
+ames |> 
+    discrete_distribution(basement_full_bathrooms,
+                          xlabel = "Basement Full Bathrooms",
+                          title  = "Basement Full Bathrooms Distribution")
+```
+
+### Summary Statistics
+
+```{r}
+#| label: basement_full_bathrooms summary statistics
+#| echo: false
+ames |>
+    numeric_summary_table(basement_full_bathrooms)
+```
+
+### Relationship with Target Variable
+
+```{r}
+#| label: basement_full_bathrooms vs sale_price
+#| echo: false
+ames |>
+    scatter_plot(x_numeric = basement_full_bathrooms,
+                 y_numeric = sale_price,
+                 x_label   = "Basement Full Bathrooms",
+                 y_label   = "Sale Price ($)",
+                 title     = "Sale Price vs Basement Full Bathrooms")
+```
+
+:::
+
+## basement_half_bathrooms
+
+Numeric Variable.
+
+Basement half bathrooms.
+
+::: {.panel-tabset}
+
+### Distribution
+
+```{r}
+#| label: basement_half_bathrooms distribution
+#| echo: false
+ames |> 
+    discrete_distribution(basement_half_bathrooms,
+                          xlabel = "Basement Half Bathrooms",
+                          title  = "Basement Half Bathrooms Distribution")
+```
+
+### Summary Statistics
+
+```{r}
+#| label: basement_half_bathrooms summary statistics
+#| echo: false
+ames |>
+    numeric_summary_table(basement_half_bathrooms)
+```
+
+### Relationship with Target Variable
+
+```{r}
+#| label: basement_half_bathrooms vs sale_price
+#| echo: false
+ames |>
+    scatter_plot(x_numeric = basement_half_bathrooms,
+                 y_numeric = sale_price,
+                 x_label   = "Basement Half Bathrooms",
+                 y_label   = "Sale Price ($)",
+                 title     = "Sale Price vs Basement Half Bathrooms")
+```
+
+:::
+
+## full_bathrooms
+
+Numeric Variable.
+
+Full bathrooms above grade.
+
+::: {.panel-tabset}
+
+### Distribution
+
+```{r}
+#| label: full_bathrooms distribution
+#| echo: false
+ames |> 
+    discrete_distribution(full_bathrooms,
+                          xlabel = "Full Bathrooms",
+                          title  = "Full Bathrooms Distribution")
+```
+
+### Summary Statistics
+
+```{r}
+#| label: full_bathrooms summary statistics
+#| echo: false
+ames |>
+    numeric_summary_table(full_bathrooms)
+```
+
+### Relationship with Target Variable
+
+```{r}
+#| label: full_bathrooms vs sale_price
+#| echo: false
+ames |>
+    scatter_plot(x_numeric = full_bathrooms,
+                 y_numeric = sale_price,
+                 x_label   = "Full Bathrooms",
+                 y_label   = "Sale Price ($)",
+                 title     = "Sale Price vs Full Bathrooms")
+```
+
+:::
+
+## half_bathrooms
+
+Numeric Variable.
+
+Half bathrooms above grade.
+
+::: {.panel-tabset}
+
+### Distribution
+
+```{r}
+#| label: half_bathrooms distribution
+#| echo: false
+ames |> 
+    discrete_distribution(half_bathrooms,
+                          xlabel = "Half Bathrooms",
+                          title  = "Half Bathrooms Distribution")
+```
+
+### Summary Statistics
+
+```{r}
+#| label: half_bathrooms summary statistics
+#| echo: false
+ames |>
+    numeric_summary_table(half_bathrooms)
+```
+
+### Relationship with Target Variable
+
+```{r}
+#| label: half_bathrooms vs sale_price
+#| echo: false
+ames |>
+    scatter_plot(x_numeric = half_bathrooms,
+                 y_numeric = sale_price,
+                 x_label   = "Half Bathrooms",
+                 y_label   = "Sale Price ($)",
+                 title     = "Sale Price vs Half Bathrooms")
+```
+
+:::
+
+## bedroom_above_ground
+
+Numeric Variable.
+
+Bedrooms above grade (does NOT include basement bedrooms).
+
+::: {.panel-tabset}
+
+### Distribution
+
+```{r}
+#| label: bedroom_above_ground distribution
+#| echo: false
+ames |> 
+    discrete_distribution(bedroom_above_ground,
+                          xlabel = "Bedroom Above Ground",
+                          title  = "Bedroom Above Ground Distribution")
+```
+
+### Summary Statistics
+
+```{r}
+#| label: bedroom_above_ground summary statistics
+#| echo: false
+ames |>
+    numeric_summary_table(bedroom_above_ground)
+```
+
+### Relationship with Target Variable
+
+```{r}
+#| label: bedroom_above_ground vs sale_price
+#| echo: false
+ames |>
+    scatter_plot(x_numeric = bedroom_above_ground,
+                 y_numeric = sale_price,
+                 x_label   = "Bedroom Above Ground",
+                 y_label   = "Sale Price ($)",
+                 title     = "Sale Price vs Bedroom Above Ground")
+```
+
+:::
+
+## kitchen_above_ground
+
+Numeric Variable.
+
+Kitchens above grade.
+
+::: {.panel-tabset}
+
+### Distribution
+
+```{r}
+#| label: kitchen_above_ground distribution
+#| echo: false
+ames |> 
+    discrete_distribution(kitchen_above_ground,
+                          xlabel = "Kitchen Above Ground",
+                          title  = "Kitchen Above Ground Distribution")
+```
+
+### Summary Statistics
+
+```{r}
+#| label: kitchen_above_ground summary statistics
+#| echo: false
+ames |>
+    numeric_summary_table(kitchen_above_ground)
+```
+
+### Relationship with Target Variable
+
+```{r}
+#| label: kitchen_above_ground vs sale_price
+#| echo: false
+ames |>
+    scatter_plot(x_numeric = kitchen_above_ground,
+                 y_numeric = sale_price,
+                 x_label   = "Kitchen Above Ground",
+                 y_label   = "Sale Price ($)",
+                 title     = "Sale Price vs Kitchen Above Ground")
+```
+
+:::
+
+## kitchen_quality
+
+Nominal Variable.
+
+Kitchen quality.
+
+```{r}
+#| label: kitchen_quality reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        kitchen_quality =
+            recode_factor(
+                
+                factor(kitchen_quality),
+                
+                "Po" = "Poor",
+                "Fa" = "Fair",
+                "TA" = "Average Typical",
+                "Gd" = "Good",
+                "Ex" = "Excellent"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+### Frequency Table
+
+```{r}
+#| label: kitchen_quality frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(kitchen_quality)
+```
+
+### Frequency Plot
+
+```{r}
+#| label: kitchen_quality frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(kitchen_quality,
+                          order         = sale_price,
+                          nominal_label = "Kitchen Quality",
+                          title         = "Kitchen Quality Distribution")
+```
+
+### Relationship with Target Variable
+
+```{r}
+#| label: kitchen_quality vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = kitchen_quality,
+                        nominal_label = "Kitchen Quality",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Kitchen Quality vs Sale Price")
+```
+
+:::
+
+## total_rooms_above_ground
+
+Numeric Variable.
+
+Total rooms above grade (does not include bathrooms).
+
+::: {.panel-tabset}
+
+### Distribution
+
+```{r}
+#| label: total_rooms_above_ground distribution
+#| echo: false
+ames |> 
+    discrete_distribution(total_rooms_above_ground,
+                          xlabel = "Total Rooms Above Ground",
+                          title  = "Total Rooms Above Ground Distribution")
+```
+
+### Summary Statistics
+
+```{r}
+#| label: total_rooms_above_ground summary statistics
+#| echo: false
+ames |>
+    numeric_summary_table(total_rooms_above_ground)
+```
+
+### Relationship with Target Variable
+
+```{r}
+#| label: total_rooms_above_ground vs sale_price
+#| echo: false
+ames |>
+    scatter_plot(x_numeric = total_rooms_above_ground,
+                 y_numeric = sale_price,
+                 x_label   = "Total Rooms Above Ground",
+                 y_label   = "Sale Price ($)",
+                 title     = "Sale Price vs Total Rooms Above Ground")
+```
+
+:::
+
+## functional
+
+Nominal Variable.
+
+Home functionality (Assume typical unless deductions are warranted).
+
+```{r}
+#| label: functional reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        functional =
+            recode_factor(
+                
+                factor(functional),
+                
+                "Sal"  = "Salvage Only",
+                "Sev"  = "Severely Damaged",
+                "Maj2" = "Major Deductions 2",
+                "Maj1" = "Major Deductions 1",
+                "Mod"  = "Moderate Deductions",
+                "Min2" = "Minor Deductions 2",
+                "Min1" = "Minor Deductions 1",
+                "Typ"  = "Typical Functionality"
+            )
+    )
+```
+
+::: {.panel-tabset}
+
+### Frequency Table
+
+```{r}
+#| label: functional frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(functional)
+```
+
+### Frequency Plot
+
+```{r}
+#| label: functional frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(functional,
+                          order         = sale_price,
+                          nominal_label = "Functional",
+                          title         = "Functional Distribution")
+```
+
+### Relationship with Target Variable
+
+```{r}
+#| label: functional vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = functional,
+                        nominal_label = "Functional",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Functional vs Sale Price")
+```
+
+:::
+
+## fireplaces
+
+Numeric Variable.
+
+Total rooms above grade (does not include bathrooms).
+
+::: {.panel-tabset}
+
+### Distribution
+
+```{r}
+#| label: fireplaces distribution
+#| echo: false
+ames |> 
+    discrete_distribution(fireplaces,
+                          xlabel = "Fireplaces",
+                          title  = "Fireplaces Distribution")
+```
+
+### Summary Statistics
+
+```{r}
+#| label: fireplaces summary statistics
+#| echo: false
+ames |>
+    numeric_summary_table(fireplaces)
+```
+
+### Relationship with Target Variable
+
+```{r}
+#| label: fireplaces vs sale_price
+#| echo: false
+ames |>
+    scatter_plot(x_numeric = fireplaces,
+                 y_numeric = sale_price,
+                 x_label   = "Fireplaces",
+                 y_label   = "Sale Price ($)",
+                 title     = "Sale Price vs Fireplaces")
+```
+
+:::
+
+## fireplace_quality
+
+Nominal Variable.
+
+Fireplace quality.
+
+::: {.panel-tabset}
+
+### Missing Values
+
+```{r}
+#| label: fireplace_quality missing values
+ames |> 
+    summarise(NAs = sum(is.na(fireplace_quality)))
+```
+
+Missing values happen when `fireplaces` is equal to zero.
+
+```{r}
+#| label: fireplace_quality missing values anaysis
+ames |> 
+    filter(is.na(fireplace_quality)) |> 
+    count(fireplaces)
+```
+
+Therefore I impute the missing values with `No Fireplace`.
+
+```{r}
+#| label: fireplace_quality reconding
+#| code-fold: true
+ames <- ames |> 
+    
+    mutate(
+        fireplace_quality = replace_na(fireplace_quality, "No Fireplace"),
+        
+        fireplace_quality = recode_factor(
+            
+            factor(fireplace_quality),
+            
+            "No Fireplace" = "No Fireplace",
+            "Po"           = "Poor",
+            "Fa"           = "Fair",
+            "TA"           = "Average Typical",
+            "Gd"           = "Good",
+            "Ex"           = "Excellent"
+        )
+    )
+```
+
+### Frequency Table
+
+```{r}
+#| label: fireplace_quality frequency table
+#| echo: false
+ames |> 
+    nominal_frequency_table(fireplace_quality)
+```
+
+### Frequency Plot
+
+```{r}
+#| label: fireplace_quality frequency plot
+#| echo: false
+ames |> 
+    nominal_frequency_bar(fireplace_quality,
+                          order         = sale_price,
+                          nominal_label = "Fireplace Quality",
+                          title         = "Fireplace Quality Distribution")
+```
+
+### Relationship with Target Variable
+
+```{r}
+#| label: fireplace_quality vs sale_price
+#| echo: false
+ames |> 
+    nominal_numeric_box(nominal       = fireplace_quality,
+                        nominal_label = "Fireplace Quality",
+                        numeric       = sale_price,
+                        numeric_label = "Sale Price ($)",
+                        title         = "Fireplace Quality vs Sale Price")
+```
+
+:::

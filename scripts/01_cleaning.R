@@ -1,22 +1,6 @@
 library(tidyverse)
 library(AmesHousing)
 
-calc_mode <- function(x){
-    
-    # from
-    # https://www.codingprof.com/how-to-replace-nas-with-the-mode-most-frequent-value-in-r/
-    
-    # List the distinct / unique values
-    distinct_values <- unique(x)
-    
-    # Count the occurrence of each distinct value
-    distinct_tabulate <- tabulate(match(x, distinct_values))
-    
-    # Return the value with the highest occurrence
-    distinct_values[which.max(distinct_tabulate)]
-    
-}
-
 ames <- ames_raw |>
     
     rename(id                        = Order,
@@ -623,14 +607,12 @@ ames <- ames_raw |>
         # Electrical (Ordinal): Electrical system
         # One missing value will be imputed using the mode
         
-        electrical = factor(electrical),
-        
         # impute mode
-        electrical = replace_na(electrical, calc_mode(electrical)),
+        electrical = replace_na(electrical, "SBrkr"),
         
         electrical = recode_factor(
             
-            electrical,
+            factor(electrical),
             
             "Mix"   = "Mixed",
             "FuseP" = "Fuse Box Poor",
@@ -721,8 +703,6 @@ ames <- ames_raw |>
             "No Garage"	= "No Garage"),
         
         # Garage Yr Blt (Discrete): Year garage was built
-        # there are some missing values for this variable, and it is not clear
-        # how to deal with them. This variable was removed
         
         # Garage Finish (Ordinal): Interior finish of the garage
         
@@ -898,7 +878,5 @@ ames <- ames_raw |>
         # SalePrice (Continuous): Sale price $$
         
     )
-
-rm(calc_mode)
 
 ames |> write_rds(file = "ames.RDS")
